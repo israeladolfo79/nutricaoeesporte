@@ -1,0 +1,18 @@
+.entrada{
+    text-align: center;
+    width: 50vh;
+    height: 20vh;
+    margin-left: 60%;
+}
+.explicacao{
+    width: 50vh;
+
+}
+body{
+    background-image: url("src/wallpaper.jpg");
+}
+input{ 
+    width: 80%;
+    height: 20%;
+    margin-top: 5%;
+}
