@@ -2,13 +2,12 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    color: gray;
+    color: white
 }
 
 
 .botao_padrao{
    background-color: #0066ff;
-   color: white;
    text-align: center;
    width: 20vh;
    height: 4vh;

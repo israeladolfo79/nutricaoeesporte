@@ -1,17 +1,27 @@
 .entrada{
+    position: absolute;
     text-align: center;
-    width: 50vh;
-    height: 20vh;
-    margin-left: 60%;
+    width: 25%;
+    height: 20%;
+    right: 10%;
+    top: 30%;
 }
 .explicacao{
-    width: 50vh;
-
+    position: absolute;
+    width: 25%;
+    left: 15%;
+    top: 30%;
+    font-size: large;
 }
 body{
-    background-image: url("src/wallpaper.jpg");
+    background-image: url("../src/wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 }
 input{ 
+    color: gray;
     width: 80%;
     height: 20%;
     margin-top: 5%;
