@@ -20,23 +20,28 @@
         </p>
     </div>
 
-    <div class="entrada centro_superior">
+    <!-- Entrada de Login -->
+    <div class="entrada centro_superior" id="entrada_login">
         <h3> Entre Agora</h3>
         
+        <!--Nome de usuario e Email -->
         <input type="text" id="login" placeholder="nome de usuario/email"
-        onclick="faz_aviso_ficar_em_branco('aviso_login')"> 
+        onclick="faz_elemento_ficar_invisivel('aviso_login')"> 
         <br>
         <b class="aviso oculto" id="aviso_login">Email ou nome de usuario pode estar em branco</b>
         
-        
+        <!--Senha -->
         <input type="password" id="senha" placeholder="senha"
-        onclick="faz_aviso_ficar_em_branco('aviso_senha')"
+        onclick="faz_elemento_ficar_invisivel('aviso_senha')"
         > 
         <b class="aviso oculto"  id="aviso_senha" >Senha não pode estar em branco</b>
         
+        <!--Botoes -->
         <div class="botoes_entrada central">
             <div class="botao_padrao central" id="botao_login" onclick="efetuar_login()">login</div>
-            <div class="botao_padrao central" id="botao_cadastrar">Cadastrar</div>
+            <div class="botao_padrao central" id="botao_cadastrar"
+            onclick="mostra_cadastrar()"
+            >Cadastrar</div>
         </div>
         <div>   
             <p class="texto_clicavel">esqueceu sua senha</p>
@@ -44,27 +49,50 @@
     </div>
 
 
-
-
-
-    <div class="entrada centro_superior oculto">
+    <!-- Entrada de Cadastro -->
+    <div class="entrada centro_superior oculto" id="entrada_cadastro">
         <h3> Cadastre-Se</h3>
-        <input type="text" id="login" placeholder="nome de usuario/email"
-        onclick="faz_aviso_ficar_em_branco('aviso_login')"> 
-        <br>
-        <b class="aviso oculto" id="aviso_login">Email não pode estar em branco</b>
-        <input type="password" id="senha" placeholder="senha"
-        onclick="faz_aviso_ficar_em_branco('aviso_senha')"
-        > 
 
-        <b class="aviso oculto"  id="aviso_senha" >Senha não pode estar em branco</b>
+        <!-- Nome de Usuario-->
+        <input type="text" id="cadastrar_nome_de_usuario" placeholder="Nome de usuario"
+        onclick="faz_aviso_ficar_em_branco('cadastrar_nome_de_usuario')"> 
+        <br>
+        <b class="aviso oculto" id="cadastrar_nome_de_usuario">
+            Nome de Usuario não pode estar em branco
+        </b>
+
+        
+        <!--Email -->
+        <input type="text" id="cadastrar_email" placeholder="Nome de usuario"
+        onclick="faz_aviso_ficar_em_branco('cadastrar_email')"> 
+        <br>
+        <b class="aviso oculto" id="cadastrar_email">
+            Email Nao pode estar em branco
+        </b>
+
+
+
+        <!--Senha 1 -->
+        <input type="password" id="cadastrar_senha" placeholder="senha"
+        onclick="faz_aviso_ficar_em_branco('aviso_cadastrar_senha')"
+        > 
+        <b class="aviso oculto"  id="aviso_cadastrar_senha" >
+            Senha não pode estar em branco
+        </b>
+
+        <!--Senha 2 -->
+        <input type="password" id="cadastrar_senha" placeholder="senha"
+        onclick="faz_aviso_ficar_em_branco('aviso_cadastrar_senha')"
+        > 
+        <b class="aviso oculto"  id="aviso_cadastrar_senha" >
+            Senha não pode estar em branco
+        </b>
+
         <div class="botoes_entrada central">
-            <div class="botao_padrao central" id="botao_login" onclick="efetuar_login()">login</div>
             <div class="botao_padrao central" id="botao_cadastrar">Cadastrar</div>
+            
         </div>
-        <div>   
-            <p class="texto_clicavel">esqueceu sua senha</p>
-        </div>
+       
     </div>
     
 

@@ -1,4 +1,7 @@
 
+let id_visivel_atual = "entrada_login"
+
+
 function efetuar_login(){
     const texto_do_login = document.getElementById("login").value
     const texto_da_senha = document.getElementById("senha").value
@@ -10,5 +13,8 @@ function efetuar_login(){
     }      
     
 }
-
-
+function mostra_cadastrar(){
+    faz_elemento_ficar_invisivel(id_visivel_atual)
+    faz_elemento_ficar_visivel("entrada_cadastro")
+    id_visivel_atual = "entrada_cadastro"
+}
