@@ -1,10 +1,13 @@
 body{
-    background-image: url("../src/wallpaper.jpg");
+
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../src/wallpaper.jpg");
+
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
 }
+
 .texto_clicavel:hover{
     color: gray;
 }
