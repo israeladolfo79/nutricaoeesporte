@@ -39,6 +39,16 @@ h3{
     right: 15vh;
 
 }
+.entrada_direita{
+    right: 10vh;
+}
+
+.entrada_baixa{
+    top: 40vh;
+}
+.entrada_alta{
+    top: 20vh;
+}
 .botoes_entrada{
     width: 90%;
     height: 30%   

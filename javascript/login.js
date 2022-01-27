@@ -13,13 +13,34 @@ function efetuar_login(){
     }      
     
 }
+
 async function mostra_cadastrar(){
-    await faz_elemento_ficar_invisivel(id_visivel_atual,1)
-    await faz_elemento_ficar_visivel("entrada_cadastro",1)
+     faz_elemento_ficar_invisivel(id_visivel_atual,delay=1,style={
+        right:"10vh"
+    })
+    faz_elemento_ficar_visivel("entrada_cadastro",dalay=1,style={
+        right:"15vh"
+    })
     id_visivel_atual = "entrada_cadastro"
 }
+
 async function mostrar_login(){
-    await faz_elemento_ficar_invisivel(id_visivel_atual,1)
-    await faz_elemento_ficar_visivel("entrada_login",1)
+    faz_elemento_ficar_invisivel(id_visivel_atual,1,style={
+        right:"10vh"
+    })
+    faz_elemento_ficar_visivel("entrada_login",1,style={
+        right:"15vh"
+    })
     id_visivel_atual = "entrada_login"
 }
+
+
+async function inicio_login(){
+    faz_elemento_ficar_visivel("entrada_login",1,style={
+        top:"30vh"
+    })
+    faz_elemento_ficar_visivel("explicacao",1,style={
+        top:"30vh"
+    })
+}
+inicio_login()
