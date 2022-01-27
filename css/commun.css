@@ -7,7 +7,12 @@
 }
 .oculto{
     display: none;
+    visibility: hidden;
+ 
+    
 }
+
+
 .central{
     margin-left: auto;
     margin-right: auto; 
@@ -29,3 +34,5 @@
     color: red;
     font-size: 2.5vh;
 }
+
+ 

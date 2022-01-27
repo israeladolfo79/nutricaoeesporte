@@ -1,20 +1,32 @@
+async function espera(delay){
+    await new Promise(resolve => setTimeout(resolve, delay * 1000));
 
-
-function faz_elemento_ficar_invisivel(id){
-    let aviso = document.getElementById(id)
-    aviso.style.display = "none"
 }
 
 
+async function faz_elemento_ficar_invisivel(id,delay=0 ){
+    let elemento = document.getElementById(id)
+    elemento.style.transitionDuration = `${delay}s`
+    elemento.style.opacity = 0
+    await espera( delay)
+    elemento.classList.add("oculto")
+}
 
-function faz_elemento_ficar_visivel(id){
-    let aviso = document.getElementById(id)
-    aviso.style.display = "inline"
+async function faz_elemento_ficar_visivel(id,delay=0){
+    let elemento = document.getElementById(id)
+    elemento.classList.remove("oculto")
+    elemento.style.opacity = 0
+    await espera(0.05)
+    elemento.style.transitionDuration = `${delay}s`
+    elemento.style.opacity = 1
+    await espera(delay)
+   
+
 }
 
 function torna_aviso_visivel_se_input_em_branco(texto,id_do_aviso){
     if(texto== ""){
-        faz_elemento_ficar_visivel(id_do_aviso)
+        faz_elemento_ficar_visivel(id_do_aviso,0.25)
     }
     return false
 }

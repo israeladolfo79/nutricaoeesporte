@@ -26,20 +26,20 @@
         
         <!--Nome de usuario e Email -->
         <input type="text" id="login" placeholder="nome de usuario/email"
-        onclick="faz_elemento_ficar_invisivel('aviso_login')"> 
+        onclick="faz_elemento_ficar_invisivel('aviso_login',0.25)"> 
         <br>
         <b class="aviso oculto" id="aviso_login">Email ou nome de usuario pode estar em branco</b>
         
         <!--Senha -->
         <input type="password" id="senha" placeholder="senha"
-        onclick="faz_elemento_ficar_invisivel('aviso_senha')"
+        onclick="faz_elemento_ficar_invisivel('aviso_senha',0.25)"
         > 
         <b class="aviso oculto"  id="aviso_senha" >Senha não pode estar em branco</b>
         
         <!--Botoes -->
         <div class="botoes_entrada central">
-            <div class="botao_padrao central" id="botao_login" onclick="efetuar_login()">login</div>
-            <div class="botao_padrao central" id="botao_cadastrar"
+            <div class="botao_padrao" id="botao_login" onclick="efetuar_login()">login</div>
+            <div class="botao_padrao" id="botao_cadastrar"
             onclick="mostra_cadastrar()"
             >Cadastrar</div>
         </div>
@@ -89,8 +89,9 @@
         </b>
 
         <div class="botoes_entrada central">
-            <div class="botao_padrao central" id="botao_cadastrar">Cadastrar</div>
-            
+            <div class="botao_padrao" id="botao_cadastrar"
+            onclick="mostra_cadastrar()"
+            >Cadastrar</div>
         </div>
        
     </div>
