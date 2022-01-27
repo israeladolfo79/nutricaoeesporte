@@ -15,7 +15,12 @@ p{
 .centro_superior{
     top: 30vh;
 }
-
+.escuro{
+    background-color: rgb(78, 78, 78);
+}
+.escuro:hover{
+    background-color: gray;
+}
 h3{
     font-size:5vh;
 }

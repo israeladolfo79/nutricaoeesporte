@@ -18,3 +18,8 @@ async function mostra_cadastrar(){
     await faz_elemento_ficar_visivel("entrada_cadastro",1)
     id_visivel_atual = "entrada_cadastro"
 }
+async function mostrar_login(){
+    await faz_elemento_ficar_invisivel(id_visivel_atual,1)
+    await faz_elemento_ficar_visivel("entrada_login",1)
+    id_visivel_atual = "entrada_login"
+}
