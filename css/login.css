@@ -5,11 +5,12 @@ body{
     background-size: cover;
 
 }
-p{
-    font-size:3vh;
-}
 .texto_clicavel:hover{
     color: gray;
+}
+
+p{
+    font-size:3vh;
 }
 
 .centro_superior{
