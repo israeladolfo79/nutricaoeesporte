@@ -2,14 +2,30 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    color: white
+    color: white;
+    
 }
-
-
+.oculto{
+    display: none;
+}
+.central{
+    margin-left: auto;
+    margin-right: auto; 
+}
 .botao_padrao{
-   background-color: #0066ff;
+   background-color: #4891ff;
    text-align: center;
+   font-size: 3vh;
    width: 20vh;
    height: 4vh;
    border-radius: 5%;
+   margin-top: 2%;
+   margin-bottom: 2%;
+}
+.botao_padrao:hover{
+    background-color: #1573ff;
+}
+.aviso{
+    color: red;
+    font-size: 2.5vh;
 }

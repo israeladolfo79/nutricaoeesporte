@@ -10,22 +10,67 @@
 <link rel="stylesheet" href="css/login.css">
 <body>
     
-    <div class="explicacao">
 
-        <h1> Melhore sua Saude ultilizando Tecnologia </h1>
+    <div class="explicacao centro_superior">
+
+        <h3> Melhore sua Saude ultilizando Tecnologia </h3>
         <p>
             Com a nutricao e esporte, ira melhorar sua saude e seu 
             condicionamento fisico atraves da ultilizacao de inteligencia artifical
         </p>
     </div>
-    <div class="entrada">
-    <h1> Entre Agora</h1>
-    <input type="text" id="login"> <br>
-    <input type="password" id="login"> 
-    <div class="botao_padrao ">login</div>
-    <h3>esqueceu sua senha</h3>
 
+    <div class="entrada centro_superior">
+        <h3> Entre Agora</h3>
+        
+        <input type="text" id="login" placeholder="nome de usuario/email"
+        onclick="faz_aviso_ficar_em_branco('aviso_login')"> 
+        <br>
+        <b class="aviso oculto" id="aviso_login">Email ou nome de usuario pode estar em branco</b>
+        
+        
+        <input type="password" id="senha" placeholder="senha"
+        onclick="faz_aviso_ficar_em_branco('aviso_senha')"
+        > 
+        <b class="aviso oculto"  id="aviso_senha" >Senha não pode estar em branco</b>
+        
+        <div class="botoes_entrada central">
+            <div class="botao_padrao central" id="botao_login" onclick="efetuar_login()">login</div>
+            <div class="botao_padrao central" id="botao_cadastrar">Cadastrar</div>
+        </div>
+        <div>   
+            <p class="texto_clicavel">esqueceu sua senha</p>
+        </div>
     </div>
 
+
+
+
+
+    <div class="entrada centro_superior oculto">
+        <h3> Cadastre-Se</h3>
+        <input type="text" id="login" placeholder="nome de usuario/email"
+        onclick="faz_aviso_ficar_em_branco('aviso_login')"> 
+        <br>
+        <b class="aviso oculto" id="aviso_login">Email não pode estar em branco</b>
+        <input type="password" id="senha" placeholder="senha"
+        onclick="faz_aviso_ficar_em_branco('aviso_senha')"
+        > 
+
+        <b class="aviso oculto"  id="aviso_senha" >Senha não pode estar em branco</b>
+        <div class="botoes_entrada central">
+            <div class="botao_padrao central" id="botao_login" onclick="efetuar_login()">login</div>
+            <div class="botao_padrao central" id="botao_cadastrar">Cadastrar</div>
+        </div>
+        <div>   
+            <p class="texto_clicavel">esqueceu sua senha</p>
+        </div>
+    </div>
+    
+
 </body>
+<script type="text/javascript" src="javascript/geral_interface.js"></script>
+<script type="text/javascript" src="javascript/geral_api.js"></script>
+<script type="text/javascript" src="javascript/login.js"></script>
+
 </html>

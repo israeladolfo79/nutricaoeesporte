@@ -1,18 +1,3 @@
-.entrada{
-    position: absolute;
-    text-align: center;
-    width: 25%;
-    height: 20%;
-    right: 10%;
-    top: 30%;
-}
-.explicacao{
-    position: absolute;
-    width: 25%;
-    left: 15%;
-    top: 30%;
-    font-size: large;
-}
 body{
     background-image: url("../src/wallpaper.jpg");
     background-repeat: no-repeat;
@@ -20,9 +5,56 @@ body{
     background-size: cover;
 
 }
+p{
+    font-size:3vh;
+}
+.texto_clicavel:hover{
+    color: gray;
+}
+
+.centro_superior{
+    top: 30vh;
+}
+
+h3{
+    font-size:5vh;
+}
+.explicacao{
+    position: absolute;
+    width: 50vh;
+    left: 15vh;
+    
+}
+
+.entrada{
+    position: absolute;
+    text-align: center;
+    width: 50vh;
+    height: 20vh;
+    right: 15vh;
+
+}
+.botoes_entrada{
+    width: 90%;
+    height: 30%   
+    
+}
+#botao_login{
+    float:left;
+
+}
+#botao_cadastrar{
+    float: right;
+}
+
+
 input{ 
     color: gray;
-    width: 80%;
-    height: 20%;
-    margin-top: 5%;
+    font-size: 2vh;
+    border-style: none;
+    width: 90%;
+    height: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 2%;
 }
