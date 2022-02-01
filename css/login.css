@@ -8,15 +8,11 @@ body{
 
 }
 
-
-
 .texto_clicavel:hover{
     color: gray;
 }
 
-p{
-    font-size:3vh;
-}
+
 
 .centro_superior{
     top: 30vh;

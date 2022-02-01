@@ -21,14 +21,11 @@
 
 <script type="text/javascript" src="javascript/textos.js"></script>
 <script type="text/javascript" src="componentes/login/mensagem.js"></script>
+<script type="text/javascript" src="componentes/login/main_login.js"></script>
 <script>
     
-
-
-const mensagem = React.createElement(Mensagem,null)
-const tela_de_login =  React.createElement('div',null,mensagem)
 ReactDOM.render(
-  tela_de_login,
+  React.createElement(Login,null),
   $("#root").get(0)
 );
 
