@@ -23,9 +23,10 @@
 <script type="text/javascript" src="componentes/login/mensagem.js"></script>
 <script>
     
-const tela_de_login =  React.createElement('div',null,
-cria_mensagem()
-)
+
+
+const mensagem = React.createElement(Mensagem,null)
+const tela_de_login =  React.createElement('div',null,mensagem)
 ReactDOM.render(
   tela_de_login,
   $("#root").get(0)

@@ -8,6 +8,8 @@ body{
 
 }
 
+
+
 .texto_clicavel:hover{
     color: gray;
 }
@@ -28,12 +30,7 @@ p{
 h3{
     font-size:5vh;
 }
-.explicacao{
-    position: absolute;
-    width: 50vh;
-    left: 15vh;
-    
-}
+
 
 .entrada{
     position: absolute;
@@ -58,6 +55,7 @@ h3{
     height: 30%   
     
 }
+
 #botao_login{
     float:left;
 
