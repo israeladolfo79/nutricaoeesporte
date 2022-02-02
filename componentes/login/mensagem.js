@@ -4,8 +4,8 @@ class Mensagem extends React.Component{
   
 
     PROPS_QUADRO_MAE=  {
-        className:"metade-horizontal alinhado-a-esquerda"
-       
+        className:"metade-horizontal alinhado-a-esquerda",
+    
     }
     
     PROPS_MENSAGEM = {

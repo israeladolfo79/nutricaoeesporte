@@ -1,6 +1,12 @@
 h3{
     font-size: 5vh;
 }
-p{
+p,input{
     font-size: 3vh;
+}
+input{
+    width: 50vh;
+    height: 4vh;
+    margin-top: 2vh;
+    color: gray;
 }
