@@ -3,7 +3,10 @@
 class Botao extends React.Component{
 
     PROPS_BOTAO = {
-        placeholder: this.props.mensagem,
+
+       onClick:()=>{
+         this.props.acao()
+       },
         style:{
             width:100
         }
@@ -11,7 +14,7 @@ class Botao extends React.Component{
 
     render(){
    
-        const botao = React.createElement('button',null,"login")
+        const botao = React.createElement('button',this.PROPS_BOTAO,"login")
         return botao
     }
  
