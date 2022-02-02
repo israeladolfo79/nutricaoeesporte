@@ -3,15 +3,14 @@
 class Mensagem extends React.Component{
   
 
-    PROPS_QUADRO_MAE =  {
-        className:"metade_horizontal esquerda"
+    PROPS_QUADRO_MAE=  {
+        className:"metade-horizontal alinhado-a-esquerda"
+       
     }
-
+    
     PROPS_MENSAGEM = {
-        className:"metade_vertical central",
-        style:{
-            width:"70%"
-        }
+        className:"dois-tercos-horizontais metade-vertical centralizado",
+       
     }
 
     render(){

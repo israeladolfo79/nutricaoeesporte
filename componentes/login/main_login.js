@@ -1,7 +1,11 @@
 
 
 class Login extends React.Component{
-
+    
+    PROPS_QUADRO=  {
+        className:"metade_horizontal  direita "
+       
+    }
 
     render(){
         const mensagem = React.createElement(Mensagem,null)

@@ -12,38 +12,45 @@ div{
 }
 
 
-.metade, .metade_horizontal{
+.metade, .metade-horizontal{
     width: 50%;
 }
-.metade, .metade_vertical{
+.metade, .metade-vertical{
     height: 50%;
 }
+.dois-tercos,.dois-tercos-horizontais{
+    width: 70%;
+}
+.dois-tercos,.dois-tercos-verticais{
+    height: 70%;
+}
 
-.direita{
+
+.alinhado-a-direita{
     right: 0;
 }
 
-.esquerda{
+.alinhado-a-esquerda{
     left:0
 }
-.topo{
+.alinhado-ao-topo{
   top: 0;
 }
-.baixo{
+.alinhado-ao-fundo{
     bottom: 0;
 }
-.central{
+.centralizado{
     left:50%;
     top:50%;
     transform: translate(-50%,-50%)
 }
-.central_vertical{
+.centralizado-verticalmente{
 
     top: 50%;
     transform: translateY(-50%);
 
 }
-.central_horizontal{
+.centralizado-horizontalmente{
     left: 50%;
     transform: translateX(-50%);
 
