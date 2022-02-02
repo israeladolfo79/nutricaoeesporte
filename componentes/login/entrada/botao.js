@@ -1,21 +1,18 @@
 
 
-class Boatao extends React.Component{
+class Botao extends React.Component{
 
-    PROPS_INPUT = {
+    PROPS_BOTAO = {
         placeholder: this.props.mensagem,
-    
+        style:{
+            width:100
+        }
     }
 
     render(){
-        console.log(this.props)
-
-        if(this.props.tipo){
-            this.PROPS_INPUT.type = this.props.tipo
-        }
-
-        const input= React.createElement('input',this.PROPS_INPUT)
-        return input
+   
+        const botao = React.createElement('button',null,"login")
+        return botao
     }
  
 }

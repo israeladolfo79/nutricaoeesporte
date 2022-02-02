@@ -6,6 +6,11 @@ class Input extends React.Component{
         placeholder: this.props.mensagem,
     
     }
+    PROPS_QUADRO = {
+        style:{
+            marginTop:"2vh"
+        }
+    }
 
     render(){
         console.log(this.props)
@@ -15,7 +20,9 @@ class Input extends React.Component{
         }
 
         const input= React.createElement('input',this.PROPS_INPUT)
-        return input
+        const erro  = React.createElement('p',null,'erro do email')
+        const quadro = React.createElement('div',this.PROPS_QUADRO,input,erro)
+        return quadro
     }
  
 }
