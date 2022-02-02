@@ -1,0 +1,54 @@
+*{
+  
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+.metade, .metade_horizontal{
+    width: 50%;
+}
+.metade, .metade_vertical{
+    height: 50%;
+}
+
+.direita{
+    right: 0;
+}
+
+.esquerda{
+    left:0
+}
+.topo{
+  top: 0;
+}
+.baixo{
+    bottom: 0;
+}
+.central{
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%)
+}
+.central_vertical{
+
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.central_horizontal{
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+
+ 

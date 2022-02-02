@@ -1,73 +1,13 @@
+
+*{
+    color:white 
+}
+
 body{
 
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../src/wallpaper.jpg");
-
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-
 }
 
-.texto_clicavel:hover{
-    color: gray;
-}
-
-
-
-.centro_superior{
-    top: 30vh;
-}
-.escuro{
-    background-color: rgb(78, 78, 78);
-}
-.escuro:hover{
-    background-color: gray;
-}
-h3{
-    font-size:5vh;
-}
-
-
-.entrada{
-    position: absolute;
-    text-align: center;
-    width: 50vh;
-    height: 20vh;
-    right: 15vh;
-
-}
-.entrada_direita{
-    right: 10vh;
-}
-
-.entrada_baixa{
-    top: 40vh;
-}
-.entrada_alta{
-    top: 20vh;
-}
-.botoes_entrada{
-    width: 90%;
-    height: 30%   
-    
-}
-
-#botao_login{
-    float:left;
-
-}
-#botao_cadastrar{
-    float: right;
-}
-
-
-input{ 
-    color: gray;
-    font-size: 2vh;
-    border-style: none;
-    width: 90%;
-    height: 25%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    border-radius: 2%;
-}
