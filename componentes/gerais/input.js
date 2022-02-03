@@ -2,16 +2,9 @@
 
 class Input extends React.Component{
 
-    constructor(props){
-        super(props)
-    }
-
-  
    
     props_input = {
-        onClick:()=>{
-            this.props.acao()
-        },
+        onClick:()=>this.props.acao(),
         placeholder: this.props.mensagem,
         
     }

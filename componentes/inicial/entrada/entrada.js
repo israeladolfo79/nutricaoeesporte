@@ -12,15 +12,17 @@ class Entrada extends React.Component{
     }
 
     PROPS_EMAIL = {
-        acao:()=>{
-            this.setState(
-                {erro_email:false,
-                }
-            )
-        },
+        acao:()=>this.limpa_email(),
         mensagem:TEXTOS.nome_de_usuario_ou_email
     }
- 
+
+    limpa_email(){
+        this.setState(
+            {erro_email:false,
+            }
+        )
+    }
+    
     PROPS_SENHA = {
 
         acao:()=>{
@@ -37,6 +39,7 @@ class Entrada extends React.Component{
         className:"quadro dois-tercos-horizontais metade-vertical centralizado",
        
     }
+
     PROPS_QUADRO_MAE=  {
         className:"quadro metade-horizontal alinhado-a-direita "
        
@@ -45,9 +48,9 @@ class Entrada extends React.Component{
     render(){
         console.log("chamou a render")
         this.PROPS_EMAIL.erro = this.state.erro_email
-        this.PROPS_SENHA.erro = this.state.erro_senha
+        
         const email = React.createElement(Input,this.PROPS_EMAIL)
-
+        this.PROPS_SENHA.erro = this.state.erro_senha
         const senha = React.createElement(Input,this.PROPS_SENHA)
         const botao_login = React.createElement(Botao,{acao:()=>{
             this.setState(
