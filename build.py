@@ -87,6 +87,8 @@ def main():
         html = render_html(arquivos_gerais,arquivos_da_pagina)
         with open(f'{pagina}.html','w') as arq:
             arq.write(html)
-main()
+
+
+
 
     
