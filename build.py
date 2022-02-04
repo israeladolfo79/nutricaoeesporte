@@ -1,23 +1,43 @@
 
-from audioop import reverse
-from os import walk,getcwd
+
+from os import walk,getcwd,listdir
+
 
 
 class Arquivo:
 
-
     def __init__(self,dir:str,file:str) -> None:
-      
-        self.extension = file.split('.')[-1]
+        self.path = f'{dir}\{file}'
+        self.extensao = file.split('.')[-1]
+        self.tipo = self.get_tipo(self.extensao)
 
-        with open( f'{dir}\{file}','r') as arq:
-            content = arq.read()
-    
+        with open(self.path,'r') as arq:
+            self.content = arq.read()
+        
+    def __repr__(self) -> str:
+        if self.tipo:
+            return '-----------------------------\n'\
+                   f'caminho: {self.path}\n' \
+                   f'extensao: {self.extensao}\n' \
+                   f'tipo:  {self.tipo}'
+        return ''   
     @staticmethod
-    def get_type(extension:str)->str:
-                
+    def get_tipo(extensao:str)->str:
+        if extensao in ['css','scss','sass']:
+            return 'style'
+        if extensao in ['js','jsx','ts']:
+            return 'script'
 
-def retorna_arquivos(pasta:str)->list[Arquivo]:
+
+    def render(self) ->str:
+        if self.extensao in ['css','js']:
+            return self.content
+    
+        return ''
+
+
+
+def retorna_arquivos_de_pasta(pasta:str)->list[Arquivo]:
     arquivos:list[Arquivo] = []
 
     for dir,root, files in walk(pasta):
@@ -29,3 +49,24 @@ def retorna_arquivos(pasta:str)->list[Arquivo]:
 
 
 
+def retorna_arquivos_gerais() ->list[Arquivo]:
+    PASTAS_GERAIS = ['bibliotecas','componentes','constantes','estilo']
+    return  list(map(lambda pasta: retorna_arquivos_de_pasta(pasta),PASTAS_GERAIS))
+
+
+def render_html(arquivos_gerais:list[Arquivo],arquivos_da_pagina:list[Arquivo]):
+    total = arquivos_gerais + arquivos_da_pagina
+    css = list(filter(lambda arq: arq.style == 'stype',total))
+    script = list(filter(lambda arq: arq.style == 'stype',total))
+
+    
+def main():
+    arquivos_geais = retorna_arquivos_gerais()
+    paginas = listdir('paginas')
+    for pagina in paginas:
+        arquivos_da_pagina = retorna_arquivos_de_pasta(pagina)
+
+
+main()
+
+    
