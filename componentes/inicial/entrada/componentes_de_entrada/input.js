@@ -9,7 +9,7 @@ function cria_elemento_input(id,funcao_de_limpeza,placeholder,type){
         placeholder: placeholder,
         style:{
             width: "50vh",
-            height: "4vh",
+            height: "5vh",
             color: "gray",
         }
     }

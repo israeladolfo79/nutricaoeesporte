@@ -5,7 +5,9 @@ TEXTOS = {
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
     senha:"senha",
-    botao_login:"efetuar login"
+    botao_login:"Login",
+    entre_agora:"Entre Agora",
+    cadastrar:"Cadastrar"
 }
 ERROS= {
     email_nao_pode_estar_em_branco :" email ou nome de usuario \
