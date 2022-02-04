@@ -16,3 +16,8 @@ function inicial(){
     )
     
 }
+
+ReactDOM.render(
+    inicial(),
+    document.getElementById("root")
+  );

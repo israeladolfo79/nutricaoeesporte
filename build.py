@@ -1,6 +1,12 @@
 
+from audioop import reverse
 from os import walk,getcwd
 
 
-for d,r,file in next(walk(getcwd())):
-     print(file)
+
+def get_extension(file:str)->str:
+    elemns = file.split('.')
+
+
+for root, dirs, files in walk(getcwd()):
+    print(files)
