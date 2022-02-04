@@ -12,7 +12,6 @@ def copila_com_comando(comando:str,arquivo:str) ->str:
 
 
 def copila_jsx(arquivo:str)->str:
-    arquivo = arquivo.replace('.jsx','.js')
     COMANDO = 'babel --presets react {} -o {}'
     return copila_com_comando(COMANDO,arquivo)
 
@@ -49,7 +48,7 @@ def copila_html(
     css_externo = ''
     for arq in arquivos_totais:
         implementacao = arq.implementacao
-        
+        extensao = arq.extensao
         tipo = arq.tipo
 
         if implementacao == 'referenciar':
@@ -57,7 +56,13 @@ def copila_html(
                     css_externo+= cria_referencia_css(arq,pasta_de_saida)    
                 if tipo == 'script':
                      script_externo+=cria_referencia_javascript(arq,pasta_de_saida)
-        
+        if implementacao == 'copiar':
+            if extensao == 'js':
+                script_interno+='\n'+arq.content+';\n'
+            if extensao == 'css':
+                css_interno+='\n'+arq.content+';\n'
+            if extensao == 'jsx':
+                script_interno+= '\n' + copila_jsx(arq.path) + '\n'
 
     with open('build/template.html','r') as arq:
         template = arq.read()
