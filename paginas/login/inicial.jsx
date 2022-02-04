@@ -1,22 +1,16 @@
 
-
-
-
-
-function inicial(){
+class Inicial  extends React.Component{
     
+    render(){
+        return <div className="quadro">  
+                <Mensagem></Mensagem>,
+                <Entrada></Entrada>
+            </div>
 
-    return <div className="quadro">  
-    mensagem(),
-    entrada()
-    </div>
-    return  React.createElement('div',PROPS,
-  
-    )
-    
+    }
 }
 
 ReactDOM.render(
-    inicial(),
+    <Inicial></Inicial>,
     document.getElementById("root")
   );

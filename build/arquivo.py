@@ -6,7 +6,6 @@ class Arquivo:
         self.path = f'{dir}\{file}'
         self.extensao = file.split('.')[-1]
         self.file = file 
-        self.tipo = self.get_tipo(self.extensao)
         self.implementacao = self.get_implementacao(file)
 
         if self.implementacao == 'copiar':
@@ -14,12 +13,10 @@ class Arquivo:
                 self.content = arq.read()
             
     def __repr__(self) -> str:
-        if self.tipo:
-            return '-----------------------------\n'\
-                   f'caminho: {self.path}\n' \
-                   f'extensao: {self.extensao}\n' \
-                   f'tipo:  {self.tipo}'
-        return ''   
+        return '-----------------------------\n'\
+                f'caminho: {self.path}\n' \
+                f'extensao: {self.extensao}\n' \
+                f'implementacao: {self.implementacao}'
     
     @staticmethod
     def get_implementacao(file:str)->str:
@@ -27,14 +24,5 @@ class Arquivo:
             return 'referenciar'
         if '#' in file:
             return 'ignorar'
-        else:
-            return 'copiar'
-    
-    @staticmethod
-    def get_tipo(extensao:str)->str:
-        if extensao in ['css','scss','sass']:
-            return 'style'
-        if extensao in ['js','jsx','ts']:
-            return 'script'
-
+        return 'de acordo com o tipo'
 

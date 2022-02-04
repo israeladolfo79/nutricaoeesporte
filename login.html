@@ -112,8 +112,8 @@ ERROS= {
 };
 
 TEXTOS = {
-    tituloPreLogin: "Melhore sua saude ultiizando Tecnologia",
-    mensagemPreLogin: " Com a nutricao e esporte, ira melhorar sua saude e seu \
+    titulo_pre_login: "Melhore sua saude ultiizando Tecnologia",
+    mensagem_pre_login: " Com a nutricao e esporte, ira melhorar sua saude e seu \
     condicionamento fisico atraves da ultilizacao de inteligencia artifical",
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
@@ -320,47 +320,47 @@ class Login extends React.Component{
 
 
 
-                            
-function  cria_quadro_mensagem(titulo,texto_mensagem){
-    const PROPS= {
-        className:"quadro dois-tercos-horizontais metade-vertical centralizado",
-       
+class Mensagem extends React.Component {
+
+    render() {
+        return React.createElement(
+            "div",
+            { className: "quadro dois-tercos-horizontais metade-vertical centralizado" },
+            React.createElement(
+                "div",
+                { className: "quadro metade-horizontal alinhado-a-esquerda" },
+                React.createElement(
+                    "h3",
+                    null,
+                    TEXTOS.titulo_pre_login
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    TEXTOS.mensagem_pre_login
+                )
+            )
+        );
     }
-    return  React.createElement('div',PROPS,titulo,texto_mensagem)
+
 }
 
-function cria_quadro_mae(quadro_mensagem){
-    const PROPS=  {
-        className:"quadro metade-horizontal alinhado-a-esquerda",
+
+
+class Inicial extends React.Component {
+
+    render() {
+        return React.createElement(
+            "div",
+            { className: "quadro" },
+            React.createElement(Mensagem, null),
+            ",",
+            React.createElement(Entrada, null)
+        );
     }
-    return React.createElement('div',PROPS,quadro_mensagem)
 }
 
-function mensagem(){
-    const titulo = React.createElement('h3',null,TEXTOS.tituloPreLogin)
-    const texto_mensagem = React.createElement('p',null,TEXTOS.mensagemPreLogin)
-    const quadro_mensagem =  cria_quadro_mensagem(titulo,texto_mensagem)
-    return cria_quadro_mae(quadro_mensagem)
-}
-
-
-
-
-;
-
-
-
-function inicial() {
-
-    return React.createElement(
-        "div",
-        { className: "quadro" },
-        "mensagem(), entrada()"
-    );
-    return React.createElement('div', PROPS);
-}
-
-ReactDOM.render(inicial(), document.getElementById("root"));
+ReactDOM.render(React.createElement(Inicial, null), document.getElementById("root"));
 
 </script>
 </html>
