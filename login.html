@@ -22,16 +22,18 @@
 
 
 <script type="text/javascript" src="javascript/textos.js"></script>
-<script type="text/javascript" src="componentes/login/mensagem.js"></script>
 <script type="text/javascript" src="componentes/gerais/input.js"></script>
-<script type="text/javascript" src="componentes/login/entrada/botao.js"></script>
-<script type="text/javascript" src="componentes/login/entrada/entrada.js"></script>
 
-<script type="text/javascript" src="componentes/login/main_login.js"></script>
+<script type="text/javascript" src="componentes/inicial/entrada/botao.js"></script>
+<script type="text/javascript" src="componentes/inicial/entrada/login/login.js"></script>
+<script type="text/javascript" src="componentes/inicial/entrada/entrada.js"></script>
+
+<script type="text/javascript" src="componentes/inicial/mensagem.js"></script>
+<script type="text/javascript" src="componentes/inicial/inicial.js"></script>
 <script>
     
 ReactDOM.render(
-  React.createElement(Login,null),
+  inicial(),
   document.getElementById("root")
 );
 
