@@ -11,11 +11,17 @@ class Input extends React.Component{
         erro:this.props.erro
     }
 
+    limpa_input(){
+        this.setState({erro:""})
+    }
+
+
     cria_input(){
 
         let props_input = {
             id:this.props.id,
-            onClick:()=> this.setState({erro:""}),
+            onClick:()=> this.limpa_input(),
+
             placeholder: this.props.placeholder,
             
             style:{
@@ -49,7 +55,7 @@ class Input extends React.Component{
     render(){
 
         const input = this.cria_input()
-        const erro  = React.createElement('p',null,'erro do email')
+        const erro  = React.createElement('p',null,this.props.erro)
         return this.cria_quadro(input,erro)
     }
  
