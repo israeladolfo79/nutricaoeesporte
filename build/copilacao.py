@@ -16,4 +16,3 @@ def copila_jsx(arquivo:str)->str:
     return copila_com_comando(COMANDO,arquivo)
 
 
-def implementa_html(pasta:str)
