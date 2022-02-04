@@ -51,22 +51,40 @@ def retorna_arquivos_de_pasta(pasta:str)->list[Arquivo]:
 
 def retorna_arquivos_gerais() ->list[Arquivo]:
     PASTAS_GERAIS = ['bibliotecas','componentes','constantes','estilo']
-    return  list(map(lambda pasta: retorna_arquivos_de_pasta(pasta),PASTAS_GERAIS))
+    arquivos:list[Arquivo] = []
+    for pasta in PASTAS_GERAIS:
+        arquivos+=retorna_arquivos_de_pasta(pasta)
+    return arquivos
+def textos_dos_arquivos(arquivos:list[Arquivo])->str:
+    texto_total = ''
+    for arq in arquivos:
+        texto = arq.render()
+        if texto != '':
+            texto_total+=texto+'\n'
+    return texto_total
 
 
 def render_html(arquivos_gerais:list[Arquivo],arquivos_da_pagina:list[Arquivo]):
-    total = arquivos_gerais + arquivos_da_pagina
-    css = list(filter(lambda arq: arq.style == 'stype',total))
-    script = list(filter(lambda arq: arq.style == 'stype',total))
+    arquivos_totais = arquivos_gerais + arquivos_da_pagina
+    css:list[Arquivo] = list(filter(lambda arq: arq.tipo == 'style',arquivos_totais))
+    script:list[Arquivo] = list(filter(lambda arq: arq.tipo == 'script',arquivos_totais))
+    texto_css = textos_dos_arquivos(css)
+    texto_script = textos_dos_arquivos(script)
+    with open('src/template.html','r') as arq:
+        template = arq.read()
+        com_estilo = template.replace('/*estilo*/',texto_css)
+        com_script = com_estilo.replace('/*script*/',texto_script)
+        return com_script
 
-    
 def main():
-    arquivos_geais = retorna_arquivos_gerais()
+    arquivos_gerais = retorna_arquivos_gerais()
     paginas = listdir('paginas')
+
     for pagina in paginas:
-        arquivos_da_pagina = retorna_arquivos_de_pasta(pagina)
-
-
+        arquivos_da_pagina = retorna_arquivos_de_pasta(f'paginas\{pagina}')
+        html = render_html(arquivos_gerais,arquivos_da_pagina)
+        with open(f'{pagina}.html','w') as arq:
+            arq.write(html)
 main()
 
     
