@@ -1,17 +1,18 @@
 
-from build.copilacao import copila_jsx
-
 
 class Arquivo:
 
     def __init__(self,dir:str,file:str) -> None:
         self.path = f'{dir}\{file}'
         self.extensao = file.split('.')[-1]
+        self.file = file 
         self.tipo = self.get_tipo(self.extensao)
+        self.implementacao = self.get_implementacao(file)
 
-        with open(self.path,'r') as arq:
-            self.content = arq.read()
-        
+        if self.implementacao == 'copiar':
+            with open(self.path,'r') as arq:
+                self.content = arq.read()
+            
     def __repr__(self) -> str:
         if self.tipo:
             return '-----------------------------\n'\
@@ -19,7 +20,16 @@ class Arquivo:
                    f'extensao: {self.extensao}\n' \
                    f'tipo:  {self.tipo}'
         return ''   
-        
+    
+    @staticmethod
+    def get_implementacao(file:str)->str:
+        if '$' in file:
+            return 'referenciar'
+        if '#' in file:
+            return 'ignorar'
+        else:
+            return 'copiar'
+    
     @staticmethod
     def get_tipo(extensao:str)->str:
         if extensao in ['css','scss','sass']:
@@ -27,11 +37,4 @@ class Arquivo:
         if extensao in ['js','jsx','ts']:
             return 'script'
 
-
-    def render(self) ->str:
-        if self.extensao in ['css','js']:
-            return self.content
-        if self.extensao == 'jsx':
-            return copila_jsx(self.path)
-        return ''
 

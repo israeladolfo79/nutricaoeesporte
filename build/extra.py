@@ -1,8 +1,7 @@
-from os import system
+from os import system,walk
 from platform import system as sistema_operacional 
 from json import load
 from build.arquivo import Arquivo
-from build.funcoes_de_arquivo import textos_dos_arquivos
 
 def instalar_dependencias():
 
@@ -20,14 +19,13 @@ def instalar_dependencias():
         else:
             system(comand)
 
-def render_html(arquivos_gerais:list[Arquivo],arquivos_da_pagina:list[Arquivo]):
-    arquivos_totais = arquivos_gerais + arquivos_da_pagina
-    css:list[Arquivo] = list(filter(lambda arq: arq.tipo == 'style',arquivos_totais))
-    script:list[Arquivo] = list(filter(lambda arq: arq.tipo == 'script',arquivos_totais))
-    texto_css = textos_dos_arquivos(css)
-    texto_script = textos_dos_arquivos(script)
-    with open('build/template.html','r') as arq:
-        template = arq.read()
-        com_estilo = template.replace('/*estilo*/',texto_css)
-        com_script = com_estilo.replace('/*script*/',texto_script)
-        return com_script
+def arquivos_da_pasta(pasta:str)->list[Arquivo]:
+    arquivos:list[Arquivo] = []
+
+    for dir,root, files in walk(pasta):
+        files.reverse()
+        for file in files:
+            arquivos.append(Arquivo(dir,file))
+    arquivos.reverse()
+    return arquivos
+
