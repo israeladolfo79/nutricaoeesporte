@@ -1,4 +1,7 @@
 
+from build.copilacao import copila_jsx
+
+
 class Arquivo:
 
     def __init__(self,dir:str,file:str) -> None:
@@ -28,6 +31,7 @@ class Arquivo:
     def render(self) ->str:
         if self.extensao in ['css','js']:
             return self.content
-    
+        if self.extensao == 'jsx':
+            return copila_jsx(self.path)
         return ''
 
