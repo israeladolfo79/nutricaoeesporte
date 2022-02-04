@@ -4,7 +4,8 @@ TEXTOS = {
     condicionamento fisico atraves da ultilizacao de inteligencia artifical",
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
-    senha:"senha"
+    senha:"senha",
+    botao_login:"efetuar login"
 }
 ERROS= {
     email_nao_pode_estar_em_branco :" email ou nome de usuario \

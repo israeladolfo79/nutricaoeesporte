@@ -48,7 +48,7 @@ class Login extends React.Component{
    
         const entrada_user = nome_de_usuario_ou_email(this.state.erro_email,()=>this.limpa_erro_email())
         const entrada_senha = senha(this.state.erro_senha,()=>this.limpa_erro_senha())
-        const botao_login = botao("login",()=>this.efetua_login())
+        const botao_login = botao(TEXTOS.botao_login,()=>this.efetua_login())
         const quadro_login  = this.cria_quadro_login(entrada_user,entrada_senha,botao_login)
         return this.cria_quadro_mae(quadro_login)
     }
