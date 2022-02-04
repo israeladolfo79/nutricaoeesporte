@@ -48,13 +48,15 @@ def retorna_arquivos_de_pasta(pasta:str)->list[Arquivo]:
     return arquivos
 
 
-
 def retorna_arquivos_gerais() ->list[Arquivo]:
+
     PASTAS_GERAIS = ['bibliotecas','componentes','constantes','estilo']
     arquivos:list[Arquivo] = []
     for pasta in PASTAS_GERAIS:
         arquivos+=retorna_arquivos_de_pasta(pasta)
     return arquivos
+
+
 def textos_dos_arquivos(arquivos:list[Arquivo])->str:
     texto_total = ''
     for arq in arquivos:
