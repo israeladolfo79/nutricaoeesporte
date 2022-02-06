@@ -1,6 +1,4 @@
 
-
-from unittest.util import strclass
 from build.render import copila_jsx, referenciar
 
 class Arquivo:
@@ -24,7 +22,7 @@ class Arquivo:
                 f'implementacao: {self.implementacao}'
     
 
-    def copila(self,pasta_de_saida:str or None):    
+    def copila(self,pasta_de_saida:str or None) ->str:    
         if self.implementacao == 'ignorar':
             return ''
 
@@ -34,11 +32,9 @@ class Arquivo:
         elif self.implementacao ==  'de acordo com o tipo':
             
             if self.extensao  in ['css','js']:
-                self.value = self.content
-               
-            if self.extensao  == 'jsx':
-                self.value = copila_jsx(self.content)
-
+                self.value = self.content + '\n'
+            if self.extensao == 'jsx':
+                self.value = copila_jsx(self.content) + '\n'
     @staticmethod
     def get_tipo(estensao:str)->str:
         if estensao in ['css','sass']:

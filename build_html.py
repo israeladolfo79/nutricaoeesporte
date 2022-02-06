@@ -2,29 +2,38 @@ from os import listdir
 from build.arquivo import Arquivo
 from build.extra import instalar_dependencias
 from build.extra import arquivos_da_pasta,retorna_pasta_de_saida
+from build.render import cria_tag_com_valor
 
 
-def format_values(arquivos:list[Arquivo]) ->list[str]:
-    implementacao_anterior = ''
-    codigos:list[str] = []
-  
-    for arq in arquivos:
-        
-        implementacao_atual = arq.implementacao
-        print(implementacao_atual)
-        if implementacao_atual == 'de acordo com o tipo'\
-        and implementacao_anterior == 'de acordo com o tipo':
-            codigos[-1]+=arq.value
+
+def get_texto_do_arquivo(arquivos:list[Arquivo],tipo:str)->str:
+    filtrado = list(filter(lambda arq:arq.tipo == tipo,arquivos))
+    referenciados:list[str] = []
+    nao_referenciados:list[str] = []
+    for arq in filtrado:
+        if arq.implementacao == 'referenciar':
+            referenciados.append(arq.value)
         else:
-            codigos.append(arq.value)
-        implementacao_anterior = implementacao_atual 
-    return codigos
+            nao_referenciados.append(arq.value)
+    texto_referenciados = str().join(referenciados)
+    texto_nao_referenciados = cria_tag_com_valor(tipo,str().join(nao_referenciados))
+    return texto_referenciados+texto_nao_referenciados
 
 
 def render_html(pagina:str,arquivos:list[Arquivo],pasta_de_saida:str or None):
-    css:list[Arquivo] = list(filter(lambda arq:arq.tipo == 'style',arquivos))
-    script:list[Arquivo] = list(filter(lambda arq:arq.tipo == 'script',arquivos))
-    
+
+    texto_css = get_texto_do_arquivo(arquivos,'style')
+    texto_script = get_texto_do_arquivo(arquivos,'script')
+    texto_gerado = texto_css + texto_script
+    with open('build/template.html','r') as arq:
+        modelo = arq.read()
+        texto_final = modelo.replace('#entrada',texto_gerado)
+        caminho = f'{pagina}.html'
+        if pasta_de_saida:
+            caminho = pasta_de_saida + caminho
+        with open(caminho, 'w') as saida:
+                saida.write(texto_final)
+
 if __name__ == '__main__':
 
     instalar_dependencias()
@@ -32,12 +41,9 @@ if __name__ == '__main__':
     arquivos_gerais = arquivos_da_pasta('globais')
     paginas = listdir('paginas')
     pasta_de_saida = retorna_pasta_de_saida()
+    paginas:dict[str,Arquivo] = {}
     for pagina in paginas:
         pg = f'paginas/{pagina}'
         arquivos_totais = arquivos_gerais + arquivos_da_pasta(pg)
-        
-        for x in range(0,15):
-            y = arquivos_totais[x]
-            y.copila(pasta_de_saida)
-            
-        #render_html(pagina,arquivos_totais,pasta_de_saida)
+        list(map(lambda arq :arq.copila(pasta_de_saida),arquivos_totais))
+        render_html(pagina,arquivos_totais,pasta_de_saida)

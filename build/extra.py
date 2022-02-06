@@ -1,15 +1,16 @@
-from ctypes import Union
+
 from os import system,walk,mkdir
 from platform import system as sistema_operacional 
 from json import load
 from distutils.dir_util import remove_tree
 from build.arquivo import Arquivo
 from cli_args_system import Args
+
 def instalar_dependencias():
 
     try:
         with open('package.json','r') as arq:
-            chaves = load(arq)['dependencies'].keys()
+            chaves:dict = load(arq)['dependencies'].keys()
             if 'babel-preset-react' in chaves:
                 return 
     except FileNotFoundError:
