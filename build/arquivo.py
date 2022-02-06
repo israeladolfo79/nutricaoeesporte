@@ -11,6 +11,7 @@ class Arquivo:
         self.tipo = self.get_tipo(self.extensao)
         self.implementacao = self.get_implementacao(file)
         self.value = ''
+        self.content = ''
         if self.implementacao == 'de acordo com o tipo':
             with open(self.path,'r') as arq:
                 self.content = arq.read()
@@ -26,12 +27,13 @@ class Arquivo:
         if not arquivos_anteriores:
             return 
         for arq in arquivos_anteriores:
+            
             if arq.file == self.file:
-                print('pegou aqui')
                 if arq.content == self.content:
-                    print('arquivo igual',self.file)
                     return arq.value 
-                
+                else:
+                    print('mudanca no arquivo:',arq.file)
+
     def copila(self,pasta_de_saida:str or None,arquivos_anteriores:list=None):   
         
         codigo = self.arquivo_igual(arquivos_anteriores) 

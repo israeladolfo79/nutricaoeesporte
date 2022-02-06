@@ -2,11 +2,17 @@
 class Inicial  extends React.Component{
     
     render(){
-        return <div className="quadro">  
-                <Mensagem></Mensagem>,
-                <Entrada></Entrada>
-            </div>
+        return(
+            <React.Fragment>
+                <div   className="quadro metade-horizontal alinhado-a-esquerda ">
+                     <Mensagem></Mensagem>    
+                </div>
+                <div   className="quadro metade-horizontal alinhado-a-direita ">
+                     <Entrada></Entrada>
+                </div>
+            </React.Fragment> 
 
+        )
     }
 }
 

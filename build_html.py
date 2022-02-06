@@ -38,12 +38,12 @@ if __name__ == '__main__':
 
     instalar_dependencias()
     
- 
+    arquivos_das_paginas_anteriores:dict[str,Arquivo] = {} 
     while True:
         arquivos_gerais = arquivos_da_pasta('globais')
         paginas = listdir('paginas')
         pasta_de_saida = retorna_pasta_de_saida()
-        arquivos_das_paginas_anteriores:dict[str,Arquivo] = {}
+
         for pagina in paginas:
             pg = f'paginas/{pagina}'
             arquivos_totais = arquivos_gerais + arquivos_da_pasta(pg)

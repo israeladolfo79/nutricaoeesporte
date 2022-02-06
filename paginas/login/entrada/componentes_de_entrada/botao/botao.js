@@ -7,7 +7,6 @@ function botao(texto,acao){
         style:{
                 marginTop:"3%",
                 marginButton:"3%",
-
                 width:"30%",
                 height:"10%",
                 backgroundColor:"#6699ff",
