@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
- 
 
 <style>
 h3{
@@ -15,8 +6,10 @@ h3{
 p,input{
     font-size: 3vh;
 }
-;
 
+</style>
+
+<style>
 *{
   
     margin:0;
@@ -77,31 +70,9 @@ p,input{
 
 
  
-;
 
-
-*{
-    color:white 
-}
-
-body{
-
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-;
-
-;
 </style>
-<body>
-    <div id="root"></div>
-</body>
-<script src="globais\bibliotecas\$react1.js"> </script>
-<script src="globais\bibliotecas\$react2.js"> </script>
- 
+
 <script>
 ERROS= {
     email_nao_pode_estar_em_branco :" email ou nome de usuario \
@@ -109,8 +80,10 @@ ERROS= {
     email_ou_nome_de_usuario_nao_existe:"email ou none de usuario \
     nao existe"
     
-};
+}
+</script>
 
+<script>
 TEXTOS = {
     titulo_pre_login: "Melhore sua saude ultiizando Tecnologia",
     mensagem_pre_login: " Com a nutricao e esporte, ira melhorar sua saude e seu \
@@ -122,245 +95,6 @@ TEXTOS = {
     entre_agora:"Entre Agora",
     cadastrar:"Cadastrar"
 }
-;
-
-
-
-
-function botao(texto,acao){
-    const PROPS_BOTAO = {
-        onClick:()=>acao(),
-        style:{
-                marginTop:"3%",
-                marginButton:"3%",
-
-                width:"30%",
-                height:"10%",
-                backgroundColor:"#6699ff",
-                borderRadios:"4%",
-                textAlign:"Center",
-                fontSize:"4vh",
-                color:"white"
-            }
-        }
-    
-    return React.createElement('div',PROPS_BOTAO,texto)
-}
-
-;
-
-
-
-
-function cria_elemento_input(id,funcao_de_limpeza,placeholder,type){
-
-    let props_input = {
-        id:id,
-        onClick:()=> funcao_de_limpeza(),
-        placeholder: placeholder,
-        style:{
-            width: "50vh",
-            height: "5vh",
-            color: "gray",
-        }
-    }
-            
-    if(type){
-        props_input.type = type
-    }
-
-    return React.createElement('input',props_input)
-}
-
-
-function input(id,funcao_de_limpeza,placeholder,erro_gerado,type){
-    const input = cria_elemento_input(id,funcao_de_limpeza,placeholder,type)
-    const erro  = React.createElement('p',null,erro_gerado)
-    const PROPS_QUADRO = {
-        style:{
-            marginTop:"2vh"
-        }
-    }
-    if(erro_gerado){
-        return  React.createElement('div',PROPS_QUADRO,input,erro)
-    }else{
-        return  React.createElement('div',PROPS_QUADRO,input)
-    }
-}
-
-
-
-;
-
-
-
-
-function email(erro_gerado,funcao_de_limpeza){
-    return input(
-        id="email",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.email,
-        erro_gerado
-    )
-}
-
-
-function nome_de_usuario_ou_email(erro_gerado,funcao_de_limpeza){
-    return input(
-        id="user",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.nome_de_usuario_ou_email,
-        erro_gerado
-    )
-}
-
-
-function senha(erro_gerado,funcao_de_limpeza, num=0){
-    return input(
-        id="senha",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.senha,
-        erro_gerado,
-        type="password"
-    )
-}
-
-;
-
-
-
-class Entrada extends React.Component{
-    
-    constructor(props){
-        super(props)
-    }
-    state = {
-        entrada_atual:'login'
-    }
-     
-
-    render(){
-
-        var componente_de_entrada
-        
-        switch(this.state.entrada_atual){
-
-            case "login": componente_de_entrada = React.createElement(Login)
-            
-        }
-        
-        return componente_de_entrada
-        
-    }
- 
-}
-
-;
-
-
-
-class Login extends React.Component{
-    
-    constructor(props){
-        super(props)
-        this.state ={
-            erro_email:"",
-            erro_senha:""
-        }
-    }
-
-    limpa_erro_email(){
-        this.setState({erro_email:""})
-    }
-    
-    limpa_erro_senha(){
-        this.setState({erro_senha:""})
-    }
-
-    efetua_login(){
-
-        this.setState({
-            erro_email:"erro de email",
-            erro_senha:"erro senha"
-    })
-    }
-    
-    cria_quadro_login(entre_agora,entrada_user,entrada_senha,botao_login,botao_cadastrar){
-        const PROPS_QUADRO_ENTRADA = {
-            className:"quadro dois-tercos-horizontais metade-vertical centralizado",
-        
-        }
-        return  React.createElement('div',PROPS_QUADRO_ENTRADA,entre_agora,
-        entrada_user,entrada_senha,botao_login,botao_cadastrar)
-    }
-    
-    cria_quadro_mae(quadro_login){
-        const PROPS_QUADRO_MAE=  {
-            className:"quadro metade-horizontal alinhado-a-direita "
-        
-        }
-        return React.createElement('div',PROPS_QUADRO_MAE,quadro_login)
-
- 
-    }
-    render(){
-        const entre_agora = React.createElement("h3",null,TEXTOS.entre_agora)
-        const entrada_user = nome_de_usuario_ou_email(this.state.erro_email,()=>this.limpa_erro_email())
-        const entrada_senha = senha(this.state.erro_senha,()=>this.limpa_erro_senha())
-        const botao_login = botao(TEXTOS.botao_login,()=>this.efetua_login())
-        const botao_cadastrar = botao(TEXTOS.cadastrar,()=>this.props.cadastrar())
-        const quadro_login  = this.cria_quadro_login(entre_agora,entrada_user,entrada_senha,
-        botao_login,botao_cadastrar)
-        return this.cria_quadro_mae(quadro_login)
-    }
- 
-}
-
-;
-
-
-
-class Mensagem extends React.Component {
-
-    render() {
-        return React.createElement(
-            "div",
-            { className: "quadro dois-tercos-horizontais metade-vertical centralizado" },
-            React.createElement(
-                "div",
-                { className: "quadro metade-horizontal alinhado-a-esquerda" },
-                React.createElement(
-                    "h3",
-                    null,
-                    TEXTOS.titulo_pre_login
-                ),
-                React.createElement(
-                    "p",
-                    null,
-                    TEXTOS.mensagem_pre_login
-                )
-            )
-        );
-    }
-
-}
-
-
-
-class Inicial extends React.Component {
-
-    render() {
-        return React.createElement(
-            "div",
-            { className: "quadro" },
-            React.createElement(Mensagem, null),
-            ",",
-            React.createElement(Entrada, null)
-        );
-    }
-}
-
-ReactDOM.render(React.createElement(Inicial, null), document.getElementById("root"));
 
 </script>
-</html>
+<script src="$react1.js"></script><script src="$react2.js"></script>
