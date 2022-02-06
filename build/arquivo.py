@@ -26,8 +26,10 @@ class Arquivo:
         if not arquivos_anteriores:
             return 
         for arq in arquivos_anteriores:
-            if arq.file != self.file:
+            if arq.file == self.file:
+                print('pegou aqui')
                 if arq.content == self.content:
+                    print('arquivo igual',self.file)
                     return arq.value 
                 
     def copila(self,pasta_de_saida:str or None,arquivos_anteriores:list=None):   
@@ -38,7 +40,7 @@ class Arquivo:
 
         elif self.implementacao == 'ignorar':
             return ''
-            
+
         elif self.implementacao == 'referenciar':
            self.value =  referenciar(self.extensao,self.path,self.file,pasta_de_saida)
 
