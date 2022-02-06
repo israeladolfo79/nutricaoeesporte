@@ -38,12 +38,21 @@ if __name__ == '__main__':
 
     instalar_dependencias()
     
-    arquivos_gerais = arquivos_da_pasta('globais')
-    paginas = listdir('paginas')
-    pasta_de_saida = retorna_pasta_de_saida()
-    paginas:dict[str,Arquivo] = {}
-    for pagina in paginas:
-        pg = f'paginas/{pagina}'
-        arquivos_totais = arquivos_gerais + arquivos_da_pasta(pg)
-        list(map(lambda arq :arq.copila(pasta_de_saida),arquivos_totais))
-        render_html(pagina,arquivos_totais,pasta_de_saida)
+ 
+    while True:
+        arquivos_gerais = arquivos_da_pasta('globais')
+        paginas = listdir('paginas')
+        pasta_de_saida = retorna_pasta_de_saida()
+        arquivos_das_paginas_anteriores:dict[str,Arquivo] = {}
+        for pagina in paginas:
+            pg = f'paginas/{pagina}'
+            arquivos_totais = arquivos_gerais + arquivos_da_pasta(pg)
+            try:
+                pagina_anterior = arquivos_das_paginas_anteriores[pagina]
+                list(map(lambda arq :arq.copila(pasta_de_saida,pagina_anterior),arquivos_totais))
+            except KeyError:
+                list(map(lambda arq :arq.copila(pasta_de_saida),arquivos_totais))
+
+            render_html(pagina,arquivos_totais,pasta_de_saida)
+            arquivos_das_paginas_anteriores[pagina] = arquivos_totais
+

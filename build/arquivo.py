@@ -1,4 +1,5 @@
 
+from typing import Any
 from build.render import copila_jsx, referenciar
 
 class Arquivo:
@@ -21,11 +22,23 @@ class Arquivo:
                 f'extensao: {self.extensao}\n' \
                 f'implementacao: {self.implementacao}'
     
+    def arquivo_igual(self,arquivos_anteriores:list)->str:
+        if not arquivos_anteriores:
+            return 
+        for arq in arquivos_anteriores:
+            if arq.file != self.file:
+                if arq.content == self.content:
+                    return arq.value 
+                
+    def copila(self,pasta_de_saida:str or None,arquivos_anteriores:list=None):   
+        
+        codigo = self.arquivo_igual(arquivos_anteriores) 
+        if codigo:
+            self.value = codigo 
 
-    def copila(self,pasta_de_saida:str or None) ->str:    
-        if self.implementacao == 'ignorar':
+        elif self.implementacao == 'ignorar':
             return ''
-
+            
         elif self.implementacao == 'referenciar':
            self.value =  referenciar(self.extensao,self.path,self.file,pasta_de_saida)
 
@@ -35,6 +48,8 @@ class Arquivo:
                 self.value = self.content + '\n'
             if self.extensao == 'jsx':
                 self.value = copila_jsx(self.content) + '\n'
+
+
     @staticmethod
     def get_tipo(estensao:str)->str:
         if estensao in ['css','sass']:
