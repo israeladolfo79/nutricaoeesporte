@@ -156,17 +156,14 @@ function botao(texto,acao){
 
 
 
-function cria_elemento_input(id, funcao_de_limpeza, placeholder, type = "text") {
-    return React.createElement("input", {
+function input(id, funcao_de_limpeza, placeholder, erro_gerado, type) {
+    const input = React.createElement("input", {
         id: id,
         placeholder: placeholder,
-        oncClick: () => funcao_de_limpeza(),
+        onClick: () => funcao_de_limpeza(),
         type: type
     });
-}
 
-function input(id, funcao_de_limpeza, placeholder, erro_gerado) {
-    const input = cria_elemento_input(id, funcao_de_limpeza, placeholder, type);
     const erro = React.createElement(
         "p",
         null,
@@ -188,8 +185,6 @@ function input(id, funcao_de_limpeza, placeholder, erro_gerado) {
     }
 }
 
-
-
 function email(erro_gerado, funcao_de_limpeza) {
     return input(id = "email", funcao_de_limpeza, placeholder = TEXTOS.email, erro_gerado);
 }
@@ -200,29 +195,6 @@ function nome_de_usuario_ou_email(erro_gerado, funcao_de_limpeza) {
 
 function senha(erro_gerado, funcao_de_limpeza, num = 0) {
     return input(id = "senha", funcao_de_limpeza, placeholder = TEXTOS.senha, erro_gerado, type = "password");
-}
-
-
-
-class Entrada extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            entrada_atual: 'login'
-        };
-    }
-
-    render() {
-
-        switch (this.state.entrada_atual) {
-
-            case "login":
-                return React.createElement(Login, null);
-
-        }
-    }
-
 }
 
 
@@ -254,6 +226,10 @@ class Login extends React.Component {
     }
 
     render() {
+        const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_email, () => this.limpa_erro_email());
+        const senha = senha(this.state.erro_senha, () => this.limpa_erro_senha());
+        const botao_login = botao(TEXTOS.botao_login, () => this.efetua_login());
+        const botao_cadastrar = botao(TEXTOS.cadastrar, () => this.props.cadastrar());
         return React.createElement(
             "div",
             { className: "quadro dois-tercos-horizontais metade-vertical centralizado" },
@@ -264,11 +240,34 @@ class Login extends React.Component {
                 TEXTOS.entre_agora,
                 " "
             ),
-            nome_de_usuario_ou_email(this.state.erro_email, () => this.limpa_erro_email()),
-            senha(this.state.erro_senha, () => this.limpa_erro_senha()),
-            botao(TEXTOS.botao_login, () => this.efetua_login()),
-            botao(TEXTOS.cadastrar, () => this.props.cadastrar())
+            nome_de_usuario,
+            senha,
+            botao_login,
+            botao_cadastrar
         );
+    }
+
+}
+
+
+
+class Entrada extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            entrada_atual: 'login'
+        };
+    }
+
+    render() {
+
+        switch (this.state.entrada_atual) {
+
+            case "login":
+                return React.createElement(Login, null);
+
+        }
     }
 
 }

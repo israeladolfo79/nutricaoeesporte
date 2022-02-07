@@ -13,9 +13,11 @@ class Arquivo:
         self.value = ''
         self.content = ''
         if self.implementacao == 'de acordo com o tipo':
-            with open(self.path,'r') as arq:
-                self.content = arq.read()
-    
+            try:
+                with open(self.path,'r') as arq:
+                    self.content = arq.read()
+            except (PermissionError,FileNotFoundError):
+                pass 
     
     def __repr__(self) -> str:
         return '-----------------------------\n'\
