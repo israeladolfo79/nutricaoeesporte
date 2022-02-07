@@ -10,29 +10,106 @@
 <body class="quadro">
     <div id="root"  class="quadro"></div>
 </body>
-<link rel="stylesheet" type="text/css" href="globais\estilo\$fonts.css" />
-<link rel="stylesheet" type="text/css" href="globais\estilo\$posicoes.css" />
 
 <style>
-
-*{
-    color:white 
+h3 {
+  font-size: 5vh;
 }
 
-body{
-
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+p, input {
+  font-size: 3vh;
 }
 
+/*# sourceMappingURL=23423wea3sss.map */
 
+boody {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.quadro {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.metade, .metade-horizontal {
+  width: 50%;
+}
+
+.metade, .metade-vertical {
+  height: 50%;
+}
+
+.dois-tercos, .dois-tercos-horizontais {
+  width: 70%;
+}
+
+.dois-tercos, .dois-tercos-verticais {
+  height: 70%;
+}
+
+.alinhado-a-direita {
+  right: 0;
+}
+
+.alinhado-a-esquerda {
+  left: 0;
+}
+
+.alinhado-ao-topo {
+  top: 0;
+}
+
+.alinhado-ao-fundo {
+  bottom: 0;
+}
+
+.centralizado {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centralizado-verticalmente {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.centralizado-horizontalmente {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*# sourceMappingURL=23423wea3sss.map */
+
+.QuadroInput {
+  marginTop: 2vh;
+}
+
+.input {
+  width: 50vh;
+  height: 5vh;
+  color: gray;
+}
+
+/*# sourceMappingURL=23423wea3sss.map */
+
+body {
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=23423wea3sss.map */
 
 
 </style>
-<script src="globais\bibliotecas\$react1.js"></script>
-<script src="globais\bibliotecas\$react2.js"></script>
+<script src="globais\bibliotecas/$react1.js"></script>
+<script src="globais\bibliotecas/$react2.js"></script>
 
 <script>
 ERROS= {
@@ -79,79 +156,51 @@ function botao(texto,acao){
 
 
 
-
-function cria_elemento_input(id,funcao_de_limpeza,placeholder,type){
-
-    let props_input = {
-        id:id,
-        onClick:()=> funcao_de_limpeza(),
+function cria_elemento_input(id, funcao_de_limpeza, placeholder, type = "text") {
+    return React.createElement("input", {
+        id: id,
         placeholder: placeholder,
-        style:{
-            width: "50vh",
-            height: "5vh",
-            color: "gray",
-        }
-    }
-            
-    if(type){
-        props_input.type = type
-    }
-
-    return React.createElement('input',props_input)
+        oncClick: () => funcao_de_limpeza(),
+        type: type
+    });
 }
 
-
-function input(id,funcao_de_limpeza,placeholder,erro_gerado,type){
-    const input = cria_elemento_input(id,funcao_de_limpeza,placeholder,type)
-    const erro  = React.createElement('p',null,erro_gerado)
-    const PROPS_QUADRO = {
-        style:{
-            marginTop:"2vh"
-        }
-    }
-    if(erro_gerado){
-        return  React.createElement('div',PROPS_QUADRO,input,erro)
-    }else{
-        return  React.createElement('div',PROPS_QUADRO,input)
-    }
-}
-
-
-
-
-
-
-
-function email(erro_gerado,funcao_de_limpeza){
-    return input(
-        id="email",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.email,
+function input(id, funcao_de_limpeza, placeholder, erro_gerado) {
+    const input = cria_elemento_input(id, funcao_de_limpeza, placeholder, type);
+    const erro = React.createElement(
+        "p",
+        null,
         erro_gerado
-    )
+    );
+    if (erro_gerado) {
+        return React.createElement(
+            "div",
+            { className: ".QuadroInput" },
+            erro,
+            input
+        );
+    } else {
+        return React.createElement(
+            "div",
+            { className: ".QuadroInput" },
+            input
+        );
+    }
 }
 
 
-function nome_de_usuario_ou_email(erro_gerado,funcao_de_limpeza){
-    return input(
-        id="user",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.nome_de_usuario_ou_email,
-        erro_gerado
-    )
+
+function email(erro_gerado, funcao_de_limpeza) {
+    return input(id = "email", funcao_de_limpeza, placeholder = TEXTOS.email, erro_gerado);
 }
 
-
-function senha(erro_gerado,funcao_de_limpeza, num=0){
-    return input(
-        id="senha",
-        funcao_de_limpeza,
-        placeholder=TEXTOS.senha,
-        erro_gerado,
-        type="password"
-    )
+function nome_de_usuario_ou_email(erro_gerado, funcao_de_limpeza) {
+    return input(id = "user", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario_ou_email, erro_gerado);
 }
 
+function senha(erro_gerado, funcao_de_limpeza, num = 0) {
+    return input(id = "senha", funcao_de_limpeza, placeholder = TEXTOS.senha, erro_gerado, type = "password");
+}
 
 
 
@@ -244,7 +293,7 @@ class Mensagem extends React.Component {
             React.createElement(
                 "p",
                 null,
-                "mudanca feita  1"
+                "mudanca feita  2"
             )
         );
     }

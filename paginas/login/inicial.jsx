@@ -11,6 +11,7 @@ class Inicial  extends React.Component{
                      <Entrada></Entrada>
                 </div>
             </React.Fragment> 
+            
 
         )
     }

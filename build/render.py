@@ -2,22 +2,28 @@ from os import system,remove
 from shutil import copyfile
 
 
+HASH = '23423wea3sss'
+def copila_com_comando(comando:str,caminho:str) ->str:
+  
+    system(comando.format(caminho,HASH))
+   
+    try:
+        with open(HASH,'r') as arq:
+            texto = arq.read()
+            return texto
+    except:
+        print('erro ocorrido em :',caminho)
+        return ''
 
-def copila_com_comando(comando:str,codigo:str) ->str:
-    HASH = '23423wea3sss'
-    with open(HASH,'w') as arq:
-        arq.write(codigo)
-    system(comando.format(HASH,HASH))
-    with open(HASH,'r') as arq:
-        texto = arq.read()
-    remove(HASH)
-    return texto
-
-
-def copila_jsx(codigo:str)->str:
+def copila_jsx(caminho:str)->str:
     COMANDO = 'babel --presets react {} -o {}'
-    return copila_com_comando(COMANDO,codigo)
+    return copila_com_comando(COMANDO,caminho)
 
+
+def copila_sass(caminho:str)->str:
+    COMANDO = 'sass {} {}'
+    saida =  copila_com_comando(COMANDO,caminho)
+    return saida 
 
 def referenciar(extensao:str,path:str,file:str,pasta_de_saida:str or None):
     if extensao == 'js':

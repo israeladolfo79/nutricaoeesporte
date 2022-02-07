@@ -1,11 +1,11 @@
 
 from typing import Any
-from build.render import copila_jsx, referenciar
+from build.render import copila_jsx, copila_sass, referenciar
 
 class Arquivo:
 
     def __init__(self,dir:str,file:str) -> None:
-        self.path = f'{dir}\{file}'
+        self.path = f'{dir}/{file}'
         self.file = file
         self.extensao = file.split('.')[-1]
         self.tipo = self.get_tipo(self.extensao)
@@ -51,8 +51,10 @@ class Arquivo:
             if self.extensao  in ['css','js']:
                 self.value = self.content + '\n'
             if self.extensao == 'jsx':
-                self.value = copila_jsx(self.content) + '\n'
-
+                self.value = copila_jsx(self.path) + '\n'
+            if self.extensao  in ['sass','scss']:
+                self.value = copila_sass(self.path) + '\n'
+    
 
     @staticmethod
     def get_tipo(estensao:str)->str:

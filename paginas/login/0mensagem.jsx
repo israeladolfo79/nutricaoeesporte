@@ -7,7 +7,7 @@ class Mensagem extends React.Component{
                             metade-vertical centralizado">
                         <h3>{TEXTOS.titulo_pre_login}</h3>
                         <p>{TEXTOS.mensagem_pre_login}</p>
-                        <p>mudanca feita  1</p>             
+                        <p>mudanca feita  2</p>             
             </div>
         )
     }

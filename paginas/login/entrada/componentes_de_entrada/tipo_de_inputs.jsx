@@ -11,6 +11,7 @@ function email(erro_gerado,funcao_de_limpeza){
 }
 
 
+
 function nome_de_usuario_ou_email(erro_gerado,funcao_de_limpeza){
     return input(
         id="user",
