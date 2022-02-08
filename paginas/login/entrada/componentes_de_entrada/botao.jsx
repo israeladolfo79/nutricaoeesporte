@@ -1,6 +1,6 @@
 
 
-function botao(funcao,texto,lado){
+function botao(texto,funcao,lado){
     return (
         <div className={`quadro metade-horizontal alinhado-a-${lado}`}> 
         <div className="botao quadro centralizado-horizontalmente"

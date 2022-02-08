@@ -147,15 +147,18 @@ TEXTOS = {
     condicionamento fisico atraves da ultilizacao de inteligencia artifical",
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
+    nome_de_usuario:"Nome de usuario",
     senha:"senha",
+    repetir_senha:"Repetir Senha",
     botao_login:"Login",
+    voltar:"voltar",
     entre_agora:"Entre Agora",
     cadastrar:"Cadastrar"
 }
 
 
 
-function botao(funcao, texto, lado) {
+function botao(texto, funcao, lado) {
     return React.createElement(
         "div",
         { className: `quadro metade-horizontal alinhado-a-${lado}` },
@@ -204,11 +207,18 @@ function email(erro_gerado, funcao_de_limpeza) {
 }
 
 function nome_de_usuario_ou_email(erro_gerado, funcao_de_limpeza) {
-    return input(id = "user", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario_ou_email, erro_gerado);
+    return input(id = "user_or_email", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario_ou_email, erro_gerado);
 }
 
-function senha(erro_gerado, funcao_de_limpeza, num = 0) {
+function nome_de_usuario(erro_gerado, funcao_de_limpeza) {
+    return input(id = "user", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario, erro_gerado);
+}
+function senha(erro_gerado, funcao_de_limpeza) {
     return input(id = "senha", funcao_de_limpeza, placeholder = TEXTOS.senha, erro_gerado, type = "password");
+}
+
+function repetir_senha(erro_gerado, funcao_de_limpeza) {
+    return input(id = "senha2", funcao_de_limpeza, placeholder = TEXTOS.repetir_senha, erro_gerado, type = "password");
 }
 
 
@@ -218,32 +228,27 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            erro_email: "",
+            erro_nome_de_usuario_ou_email: "",
             erro_senha: ""
         };
     }
 
-    limpa_erro_email() {
-        this.setState({ erro_email: "" });
-    }
-
-    limpa_erro_senha() {
-        this.setState({ erro_senha: "" });
-    }
-
     efetua_login() {
-
         this.setState({
-            erro_email: "erro de email",
+            erro_nome_de_usuario_ou_email: "erro de email",
             erro_senha: "erro senha"
         });
     }
 
     render() {
-        const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_email, () => this.limpa_erro_email());
-        const elemento_senha = senha(this.state.erro_senha, () => this.limpa_erro_senha());
-        const botao_login = botao(() => this.efetua_login(), TEXTOS.botao_login, 'esquerdo');
-        const botao_cadastrar = botao(this.props.cadastrar, TEXTOS.cadastrar, 'direita');
+
+        const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_nome_de_usuario_ou_email, () => this.setState({ erro_nome_de_usuario_ou_email: "" }));
+        const elemento_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: "" }));
+
+        const botao_login = botao(TEXTOS.botao_login, () => this.efetua_login(), 'esquerdo');
+
+        const botao_cadastrar = botao(TEXTOS.cadastrar, () => this.props.ir_para_cadastrar(), 'direita');
+
         return React.createElement(
             "div",
             { className: "quadro metade centralizado " },
@@ -274,32 +279,32 @@ class Cadastrar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            erro_nome_de_usuario: "",
             erro_email: "",
             erro_senha: ""
         };
     }
 
-    limpa_erro_email() {
-        this.setState({ erro_email: "" });
-    }
-
-    limpa_erro_senha() {
-        this.setState({ erro_senha: "" });
-    }
-
-    efetua_login() {
+    efetua_cadastro() {
 
         this.setState({
+            erro_nome_de_usuario: "erro nome de usuario",
             erro_email: "erro de email",
             erro_senha: "erro senha"
         });
     }
 
     render() {
-        const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_email, () => this.limpa_erro_email());
-        const elemento_senha = senha(this.state.erro_senha, () => this.limpa_erro_senha());
-        const botao_login = botao(() => this.efetua_login(), TEXTOS.botao_login, 'esquerdo');
-        const botao_cadastrar = botao(this.props.cadastrar, TEXTOS.cadastrar, 'direita');
+
+        const elem_nome_de_usuario = nome_de_usuario(this.state.erro_nome_de_usuario, () => this.setState({ nome_de_usuario_ou_email: "" }));
+
+        const elem_email = email(this.state.erro_email, () => this.setState({ erro_email: "" }));
+
+        const elem_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
+        const elem_repetir_senha = repetir_senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
+
+        const botao_cadastrar = botao(TEXTOS.cadastrar, () => this.efetua_cadastro(), 'esquerda');
+        const botao_voltar = botao(TEXTOS.voltar, () => this.props.voltar_ao_login(), 'direita');
 
         return React.createElement(
             "div",
@@ -307,14 +312,18 @@ class Cadastrar extends React.Component {
             React.createElement(
                 "h3",
                 { className: "texto-centralizado" },
-                " Cadastar "
+                " ",
+                TEXTOS.cadastrar,
+                " "
             ),
-            nome_de_usuario,
-            elemento_senha,
+            elem_nome_de_usuario,
+            elem_email,
+            elem_senha,
+            elem_repetir_senha,
             React.createElement(
                 "div",
                 { className: "quadro centralizado-horizontalmente" },
-                botao_login,
+                botao_voltar,
                 botao_cadastrar
             )
         );
@@ -332,22 +341,20 @@ class Entrada extends React.Component {
             entrada_atual: 'login'
         };
     }
-    alterar_pagina(pagina) {
-        this.setState({ entrada_atual: pagina });
-    }
 
     render() {
 
         switch (this.state.entrada_atual) {
-
             case "login":
-                return React.createElement(Login, { cadastrar: () => this.alterar_pagina('cadastrar') });
+                return React.createElement(Login, { ir_para_cadastrar: () => this.setState({ entrada_atual: "cadastrar" }) });
+
             case "cadastrar":
                 return React.createElement(
                     Cadastrar,
-                    null,
-                    ' '
+                    { voltar_ao_login: () => this.setState({ entrada_atual: "login" }) },
+                    "  "
                 );
+
         }
     }
 
@@ -369,11 +376,6 @@ class Mensagem extends React.Component {
                 "p",
                 null,
                 TEXTOS.mensagem_pre_login
-            ),
-            React.createElement(
-                "p",
-                null,
-                "mudanca feita  2"
             )
         );
     }
