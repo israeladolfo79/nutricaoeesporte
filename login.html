@@ -14,6 +14,7 @@
 <style>
 h3 {
   font-size: 5vh;
+  margin-bottom: 2vh;
 }
 
 p, input {
@@ -32,6 +33,10 @@ boody {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.texto-centralizado {
+  text-align: center;
 }
 
 .metade, .metade-horizontal {
@@ -85,13 +90,23 @@ boody {
 /*# sourceMappingURL=23423wea3sss.map */
 
 .QuadroInput {
-  marginTop: 2vh;
+  margin-top: 1vh;
 }
 
-.input {
-  width: 50vh;
-  height: 5vh;
+input {
+  width: 100%;
+  height: 3vh;
   color: gray;
+}
+
+.botao {
+  margin-top: 3%;
+  margin-button: 3%;
+  width: 40%;
+  height: 10%;
+  background-color: #6699ff;
+  border-radios: 4%;
+  font-size: 4vh;
 }
 
 /*# sourceMappingURL=23423wea3sss.map */
@@ -133,29 +148,6 @@ TEXTOS = {
 
 
 
-
-function botao(texto,acao){
-    const PROPS_BOTAO = {
-        onClick:()=>acao(),
-        style:{
-                marginTop:"3%",
-                marginButton:"3%",
-                width:"30%",
-                height:"10%",
-                backgroundColor:"#6699ff",
-                borderRadios:"4%",
-                textAlign:"Center",
-                fontSize:"4vh",
-                color:"white"
-            }
-        }
-    
-    return React.createElement('div',PROPS_BOTAO,texto)
-}
-
-
-
-
 function input(id, funcao_de_limpeza, placeholder, erro_gerado, type) {
     const input = React.createElement("input", {
         id: id,
@@ -172,14 +164,14 @@ function input(id, funcao_de_limpeza, placeholder, erro_gerado, type) {
     if (erro_gerado) {
         return React.createElement(
             "div",
-            { className: ".QuadroInput" },
+            { className: "QuadroInput" },
             erro,
             input
         );
     } else {
         return React.createElement(
             "div",
-            { className: ".QuadroInput" },
+            { className: "QuadroInput" },
             input
         );
     }
@@ -227,23 +219,33 @@ class Login extends React.Component {
 
     render() {
         const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_email, () => this.limpa_erro_email());
-        const senha = senha(this.state.erro_senha, () => this.limpa_erro_senha());
-        const botao_login = botao(TEXTOS.botao_login, () => this.efetua_login());
-        const botao_cadastrar = botao(TEXTOS.cadastrar, () => this.props.cadastrar());
+        const elemento_senha = senha(this.state.erro_senha, () => this.limpa_erro_senha());
         return React.createElement(
             "div",
-            { className: "quadro dois-tercos-horizontais metade-vertical centralizado" },
+            { className: "quadro metade centralizado " },
             React.createElement(
                 "h3",
-                null,
+                { className: "texto-centralizado" },
                 " ",
                 TEXTOS.entre_agora,
                 " "
             ),
             nome_de_usuario,
-            senha,
-            botao_login,
-            botao_cadastrar
+            elemento_senha,
+            React.createElement(
+                "div",
+                { className: "quadro centralizado-horizontalmente" },
+                React.createElement(
+                    "div",
+                    { className: "botao alinhado-a-esquerda" },
+                    " Login"
+                ),
+                React.createElement(
+                    "div",
+                    { className: "botao alinhado-a-direita" },
+                    " Cadastrar"
+                )
+            )
         );
     }
 

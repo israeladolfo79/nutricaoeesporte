@@ -10,10 +10,10 @@
     
     const erro = <p>{erro_gerado}</p>
     if (erro_gerado){
-        return <div className=".QuadroInput">{erro}{input}</div>
+        return <div className="QuadroInput">{erro}{input}</div>
     }
     else{ 
-        return <div className=".QuadroInput">{input}</div>
+        return <div className="QuadroInput">{input}</div>
     }  
 }
 

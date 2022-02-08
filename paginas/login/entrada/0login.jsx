@@ -29,16 +29,19 @@ class Login extends React.Component{
 
     render(){
         const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_email,()=>this.limpa_erro_email())
-        const senha = senha(this.state.erro_senha,()=>this.limpa_erro_senha())
-        const botao_login =botao(TEXTOS.botao_login,()=>this.efetua_login())
-        const botao_cadastrar = botao(TEXTOS.cadastrar,()=>this.props.cadastrar())
+        const elemento_senha = senha(this.state.erro_senha,()=>this.limpa_erro_senha())
         return (
-            <div  className= "quadro dois-tercos-horizontais metade-vertical centralizado">
-                  <h3> {TEXTOS.entre_agora} </h3>
-                  {nome_de_usuario}
-                  {senha}
-                  {botao_login}
-                  {botao_cadastrar}
+            <div  className= "quadro metade centralizado ">
+               
+                        <h3 className="texto-centralizado"> {TEXTOS.entre_agora} </h3>
+                        {nome_de_usuario}
+                        {elemento_senha}
+                  
+                  <div className="quadro centralizado-horizontalmente">
+                        <div className="botao alinhado-a-esquerda"> Login</div>
+                        <div className="botao alinhado-a-direita"> Cadastrar</div>
+                  </div>
+
             </div>
         )
   
