@@ -5,6 +5,7 @@ TEXTOS = {
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
     nome_de_usuario:"Nome de usuario",
+    recuperar_senha:"recuperar senha",
     senha:"senha",
     repetir_senha:"Repetir Senha",
     botao_login:"Login",

@@ -101,6 +101,12 @@ input {
   font-size: 3vh;
 }
 
+.teste {
+  position: relative;
+  width: 100%;
+  height: 50%;
+}
+
 .botao {
   margin-top: 2vh;
   margin-button: 2vh;
@@ -148,6 +154,7 @@ TEXTOS = {
     email:"email",
     nome_de_usuario_ou_email:"nome de usuario/email",
     nome_de_usuario:"Nome de usuario",
+    recuperar_senha:"recuperar senha",
     senha:"senha",
     repetir_senha:"Repetir Senha",
     botao_login:"Login",
@@ -263,9 +270,14 @@ class Login extends React.Component {
             elemento_senha,
             React.createElement(
                 "div",
-                { className: "quadro centralizado-horizontalmente" },
+                { className: "teste" },
                 botao_login,
                 botao_cadastrar
+            ),
+            React.createElement(
+                "p",
+                null,
+                "teste ddddddddddddddd"
             )
         );
     }

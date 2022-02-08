@@ -49,11 +49,11 @@ class Login extends React.Component{
                         {nome_de_usuario}
                         {elemento_senha}
                   
-                  <div className="quadro centralizado-horizontalmente">
+                  <div className="teste">
                         {botao_login}
                         {botao_cadastrar}
                   </div>
-
+                     <p>teste ddddddddddddddd</p>
             </div>
         )
   
