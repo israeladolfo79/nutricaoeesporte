@@ -1,6 +1,6 @@
 
 
-class Login extends React.Component{
+class Cadastrar extends React.Component{
     
     constructor(props){
         super(props)
@@ -32,14 +32,15 @@ class Login extends React.Component{
         const elemento_senha = senha(this.state.erro_senha,()=>this.limpa_erro_senha())
         const botao_login = botao(()=>this.efetua_login(),TEXTOS.botao_login,'esquerdo')
         const botao_cadastrar = botao(this.props.cadastrar,TEXTOS.cadastrar,'direita')
+        
         return (
             <div  className= "quadro metade centralizado ">
                
-                        <h3 className="texto-centralizado"> {TEXTOS.entre_agora} </h3>
+                        <h3 className="texto-centralizado"> Cadastar </h3>
                         {nome_de_usuario}
                         {elemento_senha}
                   
-                  <div className="quadro centralizado-horizontalmente">
+                    <div className="quadro centralizado-horizontalmente">
                         {botao_login}
                         {botao_cadastrar}
                   </div>
