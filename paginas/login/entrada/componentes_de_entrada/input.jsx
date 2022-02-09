@@ -2,7 +2,7 @@
 
  function  input(id,funcao_de_limpeza,placeholder,erro_gerado,type){
     const input = <input 
-                      className="centralizado-horizontalmente"
+                      className="centralizado"
                         id={id}
                         placeholder={placeholder}
                         onClick={()=> funcao_de_limpeza()}

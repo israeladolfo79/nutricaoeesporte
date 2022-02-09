@@ -54,6 +54,7 @@ class Arquivo:
                 self.value = self.content + '\n'
             if self.extensao == 'jsx':
                 self.value = copila_jsx(self.path) + '\n'
+
             if self.extensao  in ['sass','scss']:
                 self.value = copila_sass(self.path) + '\n'
     
@@ -69,7 +70,7 @@ class Arquivo:
     def get_implementacao(file:str)->str:
         if '$' in file:
             return 'referenciar'
-        if '#' in file or '_' in file:
+        if '#' in file or  file[0] == '_':
             return 'ignorar'
         return 'de acordo com o tipo'
 

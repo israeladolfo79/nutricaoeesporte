@@ -32,6 +32,7 @@ def render_html(pagina:str,arquivos:list[Arquivo],pasta_de_saida:str or None):
         if pasta_de_saida:
             caminho = pasta_de_saida + caminho
         with open(caminho, 'w') as saida:
+                print('renderizou o html')
                 saida.write(texto_final)
 
 if __name__ == '__main__':

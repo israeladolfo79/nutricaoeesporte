@@ -19,7 +19,7 @@ class Entrada extends React.Component{
             elemento_filho = <Cadastrar voltar_ao_login={()=>this.setState({entrada_atual:"login"})}>  </Cadastrar>
            
         }
-        return <div className="quadro-entrada">
+        return <div className="entrada">
             {elemento_filho}
         </div>
         
