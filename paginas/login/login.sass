@@ -6,9 +6,7 @@ body
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg")
     background-repeat: no-repeat
     background-attachment: fixed
-
-
-
+    background-size: cover
 
 @media  (orientation:portrait)
     .quadro-mae-mensagem
@@ -16,14 +14,12 @@ body
         @include metade-vertical
         top:0
         
-
     .mensagem
         @include quadro 
-        width: 50%
+        @include dois-tercos-horizontais
         @include centralizado-horizontalmente
         
        
-    
     .entrada
         top: 30%
 

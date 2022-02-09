@@ -1,4 +1,5 @@
 from os import listdir
+from time import sleep
 from build.arquivo import Arquivo
 from build.extra import instalar_dependencias
 from build.extra import arquivos_da_pasta,retorna_pasta_de_saida
@@ -32,8 +33,9 @@ def render_html(pagina:str,arquivos:list[Arquivo],pasta_de_saida:str or None):
         if pasta_de_saida:
             caminho = pasta_de_saida + caminho
         with open(caminho, 'w') as saida:
-                print('renderizou o html')
                 saida.write(texto_final)
+        print('renderizou')
+        sleep(1)
 
 if __name__ == '__main__':
 
