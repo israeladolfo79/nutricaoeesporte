@@ -1,0 +1,52 @@
+@mixin quadro
+    width: 100%
+    height: 100%
+    position: absolute
+
+body
+    overflow: auto
+    min-height: 100vh
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    @include quadro 
+
+    
+#root 
+    @include quadro 
+
+
+
+@mixin metade-horizontal
+     width: 50%
+
+@mixin total-horizontal
+    width:100% 
+
+@mixin metade-vertical
+     height: 50%
+
+@mixin total-vertical 
+    height: 100%
+
+    
+@mixin metade 
+    @include metade-horizontal
+    @include metade-vertical
+    
+@mixin dois-tercos-horizontais
+    width: 70%
+
+@mixin centralizado-horizontalmente
+    left: 50%
+    transform: translateX(-50%)
+
+@mixin centralizado-verticalmente
+    top: 50%
+    transform: translateY(-50%)
+
+
+@mixin um-terco-do-topo
+    top: 30%
+
+ 

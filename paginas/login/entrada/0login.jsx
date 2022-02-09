@@ -43,17 +43,17 @@ class Login extends React.Component{
             )
             
         return (
-            <div  className= "quadro metade centralizado ">
+            <div className="quadro-entrada">
                
-                        <h3 className="texto-centralizado"> {TEXTOS.entre_agora} </h3>
+                        <h3> {TEXTOS.entre_agora} </h3>
                         {nome_de_usuario}
                         {elemento_senha}
                   
-                  <div className="teste">
+                  <div className="quadro-botao">
                         {botao_login}
                         {botao_cadastrar}
                   </div>
-                     <p>teste ddddddddddddddd</p>
+                  
             </div>
         )
   

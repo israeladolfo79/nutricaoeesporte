@@ -55,13 +55,13 @@ class Cadastrar extends React.Component{
         )
                 
 
-        return <div  className= "quadro metade centralizado ">    
+        return <div>    
                         <h3 className="texto-centralizado"> {TEXTOS.cadastrar} </h3>
                         {elem_nome_de_usuario}
                         {elem_email}
                         {elem_senha}
                         {elem_repetir_senha}
-                    <div className="quadro centralizado-horizontalmente">
+                    <div>
                     {botao_voltar}    
                     {botao_cadastrar}
                     </div>

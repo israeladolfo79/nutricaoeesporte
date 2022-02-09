@@ -2,6 +2,7 @@
 
  function  input(id,funcao_de_limpeza,placeholder,erro_gerado,type){
     const input = <input 
+                      className="centralizado-horizontalmente"
                         id={id}
                         placeholder={placeholder}
                         onClick={()=> funcao_de_limpeza()}
@@ -10,10 +11,10 @@
     
     const erro = <p>{erro_gerado}</p>
     if (erro_gerado){
-        return <div className="QuadroInput">{input}{erro}</div>
+        return <div>{input}{erro}</div>
     }
     else{ 
-        return <div className="QuadroInput">{input}</div>
+        return <div>{input}</div>
     }  
 }
 

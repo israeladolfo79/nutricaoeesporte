@@ -69,7 +69,7 @@ class Arquivo:
     def get_implementacao(file:str)->str:
         if '$' in file:
             return 'referenciar'
-        if '#' in file:
+        if '#' in file or '_' in file:
             return 'ignorar'
         return 'de acordo com o tipo'
 

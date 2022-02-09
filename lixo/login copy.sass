@@ -6,59 +6,51 @@ body
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg")
     background-repeat: no-repeat
     background-attachment: fixed
-
+    background-size: cover
     @include quadro
 
 
-    
-
-    
 
 @media  (orientation:landscape)
 
-    .quadro-mae-mensagem
-        position: absolute
-        width: 50%
-        left: 0%
+    
+
+    .quadro-inicial
+        @include metade-horizontal
 
 
-    .quadro-mae-entrada
-        position: absolute
-        width: 50%
-        right: 0
-       
+    
     .mensagem
-        position: absolute
-        @include dois-tercos-horizontais
-        @include um-terco-do-topo 
-        @include centralizado-horizontalmente  
-
-        
-    .quadro-entrada
-        @include quadro 
         @include centralizado-horizontalmente 
         @include dois-tercos-horizontais
-        @include um-terco-do-topo 
-        text-align: center
+        @include um-terco-do-topo  
 
-
-
-
-@media  (orientation:portrait)
-    
-    .quadro-mae-mensagem
-        position: absolute
+    .quadro-entrada
+        @include  um-terco-do-topo
         @include dois-tercos-horizontais
-        @include metade-vertical
-        @include centralizado-horizontalmente
+        @include  centralizado-horizontalmente
         
-    .quadro-mae-entrada
-        position: absolute 
-        
+
     
+
+
+@media  (orientation:potrait)
+    
+    .quadro-inicial
+        @include metade-vertical
+
+    .mensagem
+        @include centralizado-horizontalmente 
+        @include dois-tercos-horizontais
+        @include um-terco-do-topo  
+
+    .quadro-entrada
+        @include  um-terco-do-topo  
+        text-align: center
 
     
  
+
 .quadro-botao
     display: flex
 
