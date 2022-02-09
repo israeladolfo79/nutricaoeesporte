@@ -8,16 +8,26 @@ body
     background-attachment: fixed
     background-size: cover
 
+
 @media  (orientation:portrait)
     .quadro-mae-mensagem
-        @include quadro
         @include metade-vertical
         top:0
-        
+
+
+
     .mensagem
         @include quadro 
         @include dois-tercos-horizontais
-        @include centralizado-horizontalmente
+        @include centralizado
+        
+    .titulo-da-mensagem
+        text-align: center
+
+    .quadro-mae-entrada
+        @include quadro 
+        @include metade-vertical
+        bottom: 0
         
        
     .entrada
@@ -28,10 +38,6 @@ body
         text-align: center
 
 
-    .quadro-mae-entrada
-        @include quadro 
-        @include metade-vertical
-        bottom: 0
 
 
        

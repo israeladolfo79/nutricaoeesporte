@@ -15,7 +15,7 @@
 body, #root {
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   margin: 0;
   padding: 0;
 }
@@ -49,9 +49,6 @@ body {
 
 @media (orientation: portrait) {
   .quadro-mae-mensagem {
-    width: 100%;
-    height: 100%;
-    position: absolute;
     height: 50%;
     top: 0;
   }
@@ -62,14 +59,11 @@ body {
     position: absolute;
     width: 70%;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  .entrada {
-    top: 30%;
-  }
-
-  .entrada {
+  .titulo-da-mensagem {
     text-align: center;
   }
 
@@ -79,6 +73,14 @@ body {
     position: absolute;
     height: 50%;
     bottom: 0;
+  }
+
+  .entrada {
+    top: 30%;
+  }
+
+  .entrada {
+    text-align: center;
   }
 }
 .quadro-botao {
