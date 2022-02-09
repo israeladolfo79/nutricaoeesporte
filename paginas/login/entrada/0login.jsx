@@ -43,8 +43,8 @@ class Login extends React.Component{
             )
             
         return (
-            <div className="quadro-entrada">
-               
+            <div className="login">
+                
                         <h3> {TEXTOS.entre_agora} </h3>
                         {nome_de_usuario}
                         {elemento_senha}

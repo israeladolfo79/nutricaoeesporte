@@ -12,6 +12,49 @@
 </body>
 
 <style>
+body {
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.botao {
+  width: 48%;
+  margin-top: 2vh;
+  margin-button: 2vh;
+  text-align: center;
+  background-color: #6699ff;
+  border-radios: 5%;
+  font-size: 3vh;
+}
+
+.botao:hover {
+  background-color: #94b7fd;
+}
+
+/*# sourceMappingURL=23423wea3sss.map */
+
+h3 {
+  font-size: 4vh;
+  margin-bottom: 1vh;
+}
+
+p {
+  margin-top: 1vh;
+  font-size: 3vh;
+}
+
+input {
+  display: block;
+  margin-top: 2vh;
+  color: gray;
+  width: 40vh;
+  height: 4vh;
+  font-size: 3vh;
+}
+
 body, #root {
   height: 100%;
   width: 100%;
@@ -39,66 +82,28 @@ input {
   font-size: 3vh;
 }
 
-body {
-  color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+body, #root {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  margin: 0;
+  padding: 0;
 }
 
 @media (orientation: portrait) {
-  .quadro-mae-mensagem {
-    height: 50%;
-    top: 0;
+  #root {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
   }
 
   .mensagem {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    width: 70%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .titulo-da-mensagem {
-    text-align: center;
-  }
-
-  .quadro-mae-entrada {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    height: 50%;
-    bottom: 0;
-  }
-
-  .entrada {
-    top: 30%;
+    margin: 10%;
   }
 
   .entrada {
     text-align: center;
+    margin: 10%;
   }
-}
-.quadro-botao {
-  display: flex;
-}
-
-.botao {
-  width: 48%;
-  margin-top: 2vh;
-  margin-button: 2vh;
-  text-align: center;
-  background-color: #6699ff;
-  border-radios: 5%;
-  font-size: 3vh;
-}
-
-.botao:hover {
-  background-color: #94b7fd;
 }
 
 /*# sourceMappingURL=23423wea3sss.map */
@@ -228,7 +233,7 @@ class Login extends React.Component {
 
         return React.createElement(
             "div",
-            { className: "quadro-entrada" },
+            { className: "login" },
             React.createElement(
                 "h3",
                 null,
@@ -321,18 +326,17 @@ class Entrada extends React.Component {
 
     render() {
         var elemento_filho;
-        switch (this.state.entrada_atual) {
-            case "login":
-                elemento_filho = React.createElement(Login, { ir_para_cadastrar: () => this.setState({ entrada_atual: "cadastrar" }) });
-                break;
-            case "cadastrar":
-                elemento_filho = React.createElement(
-                    Cadastrar,
-                    { voltar_ao_login: () => this.setState({ entrada_atual: "login" }) },
-                    "  "
-                );
+        if (this.state.entrada_atual == "login") {
 
+            elemento_filho = React.createElement(Login, {
+                ir_para_cadastrar: () => this.setState({ entrada_atual: "cadastrar" }) });
         }
+
+        if (this.state.entrada_atual == "cadastrar") {
+            elemento_filho = React.createElement(Cadastrar, {
+                voltar_ao_login: () => this.setState({ entrada_atual: "login" }) });
+        }
+
         return React.createElement(
             "div",
             { className: "entrada" },
@@ -350,14 +354,18 @@ class Mensagem extends React.Component {
             "div",
             { className: "mensagem" },
             React.createElement(
-                "h3",
-                { className: "titulo-da-mensagem" },
-                TEXTOS.titulo_pre_login
-            ),
-            React.createElement(
-                "p",
-                null,
-                TEXTOS.mensagem_pre_login
+                "div",
+                { className: "interno" },
+                React.createElement(
+                    "h3",
+                    null,
+                    TEXTOS.titulo_pre_login
+                ),
+                React.createElement(
+                    "p",
+                    null,
+                    TEXTOS.mensagem_pre_login
+                )
             )
         );
     }
@@ -371,16 +379,8 @@ class Inicial extends React.Component {
         return React.createElement(
             React.Fragment,
             null,
-            React.createElement(
-                "div",
-                { className: "quadro-mae-mensagem" },
-                React.createElement(Mensagem, null)
-            ),
-            React.createElement(
-                "div",
-                { className: "quadro-mae-entrada" },
-                React.createElement(Entrada, null)
-            )
+            React.createElement(Mensagem, null),
+            React.createElement(Entrada, null)
         );
     }
 }
