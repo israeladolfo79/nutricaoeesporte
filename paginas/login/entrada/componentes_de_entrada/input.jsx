@@ -2,13 +2,11 @@
 
  function  input(id,funcao_de_limpeza,placeholder,erro_gerado,type){
     const input = <input 
-                      className="centralizado"
                         id={id}
                         placeholder={placeholder}
                         onClick={()=> funcao_de_limpeza()}
                         type={type}
                     />   
-    
     const erro = <p>{erro_gerado}</p>
     if (erro_gerado){
         return <div>{input}{erro}</div>

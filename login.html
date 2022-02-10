@@ -12,6 +12,41 @@
 </body>
 
 <style>
+h3 {
+  font-size: 4vh;
+  margin-bottom: 1vh;
+}
+
+p {
+  margin-top: 1vh;
+  font-size: 3vh;
+}
+
+body, #root {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  color: gray;
+  width: 25vw;
+  margin-top: 2vh;
+  height: 4vh;
+  font-size: 3vh;
+}
+
+@media (orientation: portrait) {
+  input {
+    width: 80vw;
+  }
+}
+* {
+  text-align: center;
+}
+
 body {
   color: white;
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg");
@@ -21,10 +56,10 @@ body {
 }
 
 .botao {
-  width: 48%;
-  margin-top: 2vh;
-  margin-button: 2vh;
-  text-align: center;
+  display: inline-block;
+  height: 4vh;
+  width: 10vw;
+  margin: 1vh;
   background-color: #6699ff;
   border-radios: 5%;
   font-size: 3vh;
@@ -34,75 +69,31 @@ body {
   background-color: #94b7fd;
 }
 
-/*# sourceMappingURL=23423wea3sss.map */
-
-h3 {
-  font-size: 4vh;
-  margin-bottom: 1vh;
+@media (orientation: portrait) {
+  .botao {
+    width: 35vw;
+  }
 }
+@media (orientation: landscape) {
+  #root {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-p {
-  margin-top: 1vh;
-  font-size: 3vh;
+  .mensagem, .entrada {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 15vw;
+  }
 }
-
-input {
-  display: block;
-  margin-top: 2vh;
-  color: gray;
-  width: 40vh;
-  height: 4vh;
-  font-size: 3vh;
-}
-
-body, #root {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  margin: 0;
-  padding: 0;
-}
-
-h3 {
-  font-size: 4vh;
-  margin-bottom: 1vh;
-}
-
-p {
-  margin-top: 1vh;
-  font-size: 3vh;
-}
-
-input {
-  display: block;
-  margin-top: 2vh;
-  color: gray;
-  width: 40vh;
-  height: 4vh;
-  font-size: 3vh;
-}
-
-body, #root {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  margin: 0;
-  padding: 0;
-}
-
 @media (orientation: portrait) {
   #root {
     display: grid;
     grid-template-rows: 1fr 1fr;
   }
 
-  .mensagem {
-    margin: 10%;
-  }
-
-  .entrada {
-    text-align: center;
-    margin: 10%;
+  .mensagem, .entrada {
+    margin: 5%;
   }
 }
 
@@ -142,13 +133,9 @@ TEXTOS = {
 function botao(texto, funcao, lado) {
     return React.createElement(
         "div",
-        { className: `quadro metade-horizontal alinhado-a-${lado}` },
-        React.createElement(
-            "div",
-            { className: "botao quadro centralizado-horizontalmente",
-                onClick: () => funcao() },
-            texto
-        )
+        { className: "botao",
+            onClick: () => funcao() },
+        texto
     );
 }
 
@@ -156,13 +143,11 @@ function botao(texto, funcao, lado) {
 
 function input(id, funcao_de_limpeza, placeholder, erro_gerado, type) {
     const input = React.createElement("input", {
-        className: "centralizado",
         id: id,
         placeholder: placeholder,
         onClick: () => funcao_de_limpeza(),
         type: type
     });
-
     const erro = React.createElement(
         "p",
         null,
@@ -233,7 +218,7 @@ class Login extends React.Component {
 
         return React.createElement(
             "div",
-            { className: "login" },
+            null,
             React.createElement(
                 "h3",
                 null,
@@ -243,12 +228,8 @@ class Login extends React.Component {
             ),
             nome_de_usuario,
             elemento_senha,
-            React.createElement(
-                "div",
-                { className: "quadro-botao" },
-                botao_login,
-                botao_cadastrar
-            )
+            botao_login,
+            botao_cadastrar
         );
     }
 

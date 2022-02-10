@@ -3,6 +3,7 @@ class Mensagem extends React.Component{
 
     render() {
         return (
+            
             <div className="mensagem">
                     
                        <div className="interno">

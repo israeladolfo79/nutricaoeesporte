@@ -1,0 +1,62 @@
+
+@import ../../globais/_globais
+
+
+// componentes
+*
+  text-align: center 
+
+body
+    color: white
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("src/wallpaper.jpg")
+    background-repeat: no-repeat
+    background-attachment: fixed
+    background-size: cover
+
+.botao
+     display: inline-block
+     height: 4vh
+     width: 10vw
+     margin: 1vh   
+     background-color:#6699ff
+     border-radios:5%
+     font-size:3vh
+  
+.botao:hover
+     background-color:#94b7fd
+
+@media  (orientation:portrait)
+    .botao
+        width: 35vw
+
+
+// orientacoes 
+@media  (orientation:landscape)
+    
+    #root
+        display: grid
+        grid-template-columns: 1fr 1fr
+    
+
+    .mensagem,.entrada
+        margin-left: 10vw
+        margin-right: 10vw
+        margin-top: 15vw
+      
+
+    
+
+
+@media  (orientation:portrait)
+    
+    #root
+        display: grid
+        grid-template-rows: 1fr 1fr
+    
+
+    .mensagem,.entrada
+        margin: 5%
+
+    
+
+    

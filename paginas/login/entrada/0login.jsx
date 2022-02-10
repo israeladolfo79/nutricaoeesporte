@@ -43,17 +43,12 @@ class Login extends React.Component{
             )
             
         return (
-            <div className="login">
-                
-                        <h3> {TEXTOS.entre_agora} </h3>
-                        {nome_de_usuario}
-                        {elemento_senha}
-                  
-                  <div className="quadro-botao">
-                        {botao_login}
-                        {botao_cadastrar}
-                  </div>
-                  
+            <div>
+                    <h3> {TEXTOS.entre_agora} </h3>
+                    {nome_de_usuario}
+                    {elemento_senha}
+                    {botao_login}
+                    {botao_cadastrar}
             </div>
         )
   

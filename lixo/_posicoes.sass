@@ -1,0 +1,61 @@
+
+
+
+@mixin quadro
+    position: absolute
+    width: 100%
+    height: 100%
+
+@mixin texto-centralizado
+     text-align: center
+
+@mixin metade-horizontal
+    width: 50%
+
+@mixin  metade-vertical
+    height: 50%
+
+@mixin metade 
+   @include metade-horizontal 
+   @include metade-vertical 
+    
+@mixin  dois-tercos-horizontais
+    width: 70%
+
+@mixin  dois-tercos-verticais
+    height: 70%
+
+
+
+@mixin alinhado-a-direita
+    right: 0
+
+
+@mixin alinhado-a-esquerda
+    left:0
+
+@mixin alinhado-ao-topo
+  top: 0
+
+@mixin alinhado-ao-fundo
+    bottom: 0
+
+@mixin centralizado
+    left:50%
+    top:50%
+    transform: translate(-50%,-50%)
+
+@mixin centralizado-verticalmente
+    top: 50%
+    transform: translateY(-50%)
+
+
+@mixin centralizado-horizontalmente
+    left: 50%
+    transform: translateX(-50%)
+
+
+
+
+
+ 
