@@ -23,21 +23,21 @@ class Cadastrar extends React.Component{
 
     render(){
 
-        const elem_nome_de_usuario = nome_de_usuario(
+        const elemento_nome_de_usuario = nome_de_usuario(
             this.state.erro_nome_de_usuario,
-            ()=>this.setState({nome_de_usuario_ou_email:""})
+            ()=>this.setState({erro_nome_de_usuario:""})
         )
 
-        const elem_email = email(
+        const elemento_email = email(
             this.state.erro_email,
             ()=>this.setState({erro_email:""})
         )
 
-        const elem_senha = senha(
+        const elemento_senha = senha(
             this.state.erro_senha,
             ()=>this.setState({erro_senha:''})
         )
-        const elem_repetir_senha = repetir_senha(
+        const elemento_repetir_senha = repetir_senha(
             this.state.erro_senha,
             ()=>this.setState({erro_senha:''}),
             
@@ -57,10 +57,10 @@ class Cadastrar extends React.Component{
 
         return <div>    
                         <h3 className="texto-centralizado"> {TEXTOS.cadastrar} </h3>
-                        {elem_nome_de_usuario}
-                        {elem_email}
-                        {elem_senha}
-                        {elem_repetir_senha}
+                        {elemento_nome_de_usuario}
+                        {elemento_email}
+                        {elemento_senha}
+                        {elemento_repetir_senha}
                     <div>
                     {botao_voltar}    
                     {botao_cadastrar}

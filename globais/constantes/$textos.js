@@ -13,3 +13,4 @@ TEXTOS = {
     entre_agora:"Entre Agora",
     cadastrar:"Cadastrar"
 }
+

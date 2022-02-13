@@ -101,33 +101,12 @@ body {
 
 
 </style>
+<script src="globais\constantes/$erros.js"></script>
+<script src="globais\constantes/$textos.js"></script>
 <script src="globais\bibliotecas/$react1.js"></script>
 <script src="globais\bibliotecas/$react2.js"></script>
 
 <script>
-ERROS= {
-    email_nao_pode_estar_em_branco :" email ou nome de usuario \
-    nao pode estar em branco",
-    email_ou_nome_de_usuario_nao_existe:"email ou none de usuario \
-    nao existe"
-    
-}
-TEXTOS = {
-    titulo_pre_login: "Melhore sua saude ultiizando Tecnologia",
-    mensagem_pre_login: " Com a nutricao e esporte, ira melhorar sua saude e seu \
-    condicionamento fisico atraves da ultilizacao de inteligencia artifical",
-    email:"email",
-    nome_de_usuario_ou_email:"nome de usuario/email",
-    nome_de_usuario:"Nome de usuario",
-    recuperar_senha:"recuperar senha",
-    senha:"senha",
-    repetir_senha:"Repetir Senha",
-    botao_login:"Login",
-    voltar:"voltar",
-    entre_agora:"Entre Agora",
-    cadastrar:"Cadastrar"
-}
-
 
 
 function botao(texto, funcao, lado) {
@@ -141,51 +120,52 @@ function botao(texto, funcao, lado) {
 
 
 
-function input(id, funcao_de_limpeza, placeholder, erro_gerado, type) {
-    const input = React.createElement("input", {
-        id: id,
+function input(placeholder, type, erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    const input = React.createElement('input', {
+
         placeholder: placeholder,
         onClick: () => funcao_de_limpeza(),
+        onBlur: event => funcao_de_saida(event.target.value),
         type: type
     });
     const erro = React.createElement(
-        "p",
+        'p',
         null,
         erro_gerado
     );
     if (erro_gerado) {
         return React.createElement(
-            "div",
+            'div',
             null,
             input,
             erro
         );
     } else {
         return React.createElement(
-            "div",
+            'div',
             null,
             input
         );
     }
 }
 
-function email(erro_gerado, funcao_de_limpeza) {
-    return input(id = "email", funcao_de_limpeza, placeholder = TEXTOS.email, erro_gerado);
+function nome_de_usuario_ou_email(erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    return input(TEXTOS.nome_de_usuario_ou_email, 'text', erro_gerado, funcao_de_limpeza, funcao_de_saida);
 }
 
-function nome_de_usuario_ou_email(erro_gerado, funcao_de_limpeza) {
-    return input(id = "user_or_email", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario_ou_email, erro_gerado);
+function senha(erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    return input(TEXTOS.senha, 'password', erro_gerado, funcao_de_limpeza, funcao_de_saida);
 }
 
-function nome_de_usuario(erro_gerado, funcao_de_limpeza) {
-    return input(id = "user", funcao_de_limpeza, placeholder = TEXTOS.nome_de_usuario, erro_gerado);
-}
-function senha(erro_gerado, funcao_de_limpeza) {
-    return input(id = "senha", funcao_de_limpeza, placeholder = TEXTOS.senha, erro_gerado, type = "password");
+function email(erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    return input(TEXTOS.email, 'text', erro_gerado, funcao_de_limpeza, funcao_de_saida);
 }
 
-function repetir_senha(erro_gerado, funcao_de_limpeza) {
-    return input(id = "senha2", funcao_de_limpeza, placeholder = TEXTOS.repetir_senha, erro_gerado, type = "password");
+function nome_de_usuario(erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    return input(TEXTOS.nome_de_usuario, 'text', erro_gerado, funcao_de_limpeza, funcao_de_saida);
+}
+function repetir_senha(erro_gerado, funcao_de_limpeza, funcao_de_saida) {
+    return input(TEXTOS.repetir_senha, 'password', erro_gerado, funcao_de_limpeza, funcao_de_saida);
 }
 
 
@@ -195,22 +175,35 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            valor_nome_de_usuario_ou_email: "",
+            valor_senha: "",
             erro_nome_de_usuario_ou_email: "",
             erro_senha: ""
         };
+    }
+
+    verifica_e_seta_email(valor_email) {
+
+        if (valor_email == "") {
+            this.setState({ erro_nome_de_usuario_ou_email: ERROS.email_ou_nome_de_usuarionao_em_branco });
+        }
+
+        this.setState({ valor_nome_de_usuario_ou_email: valor_email });
     }
 
     efetua_login() {
         this.setState({
             erro_nome_de_usuario_ou_email: "erro de email",
             erro_senha: "erro senha"
+
         });
     }
 
     render() {
+        console.log(this.state);
+        const elemento_nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_nome_de_usuario_ou_email, () => this.setState({ erro_nome_de_usuario_ou_email: "" }), valor => this.verifica_e_seta_email(valor));
 
-        const nome_de_usuario = nome_de_usuario_ou_email(this.state.erro_nome_de_usuario_ou_email, () => this.setState({ erro_nome_de_usuario_ou_email: "" }));
-        const elemento_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: "" }));
+        const elemento_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: "" }), valor => this.setState({ senha: valor }));
 
         const botao_login = botao(TEXTOS.botao_login, () => this.efetua_login(), 'esquerdo');
 
@@ -226,7 +219,7 @@ class Login extends React.Component {
                 TEXTOS.entre_agora,
                 " "
             ),
-            nome_de_usuario,
+            elemento_nome_de_usuario,
             elemento_senha,
             botao_login,
             botao_cadastrar
@@ -259,12 +252,12 @@ class Cadastrar extends React.Component {
 
     render() {
 
-        const elem_nome_de_usuario = nome_de_usuario(this.state.erro_nome_de_usuario, () => this.setState({ nome_de_usuario_ou_email: "" }));
+        const elemento_nome_de_usuario = nome_de_usuario(this.state.erro_nome_de_usuario, () => this.setState({ erro_nome_de_usuario: "" }));
 
-        const elem_email = email(this.state.erro_email, () => this.setState({ erro_email: "" }));
+        const elemento_email = email(this.state.erro_email, () => this.setState({ erro_email: "" }));
 
-        const elem_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
-        const elem_repetir_senha = repetir_senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
+        const elemento_senha = senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
+        const elemento_repetir_senha = repetir_senha(this.state.erro_senha, () => this.setState({ erro_senha: '' }));
 
         const botao_cadastrar = botao(TEXTOS.cadastrar, () => this.efetua_cadastro(), 'esquerda');
         const botao_voltar = botao(TEXTOS.voltar, () => this.props.voltar_ao_login(), 'direita');
@@ -279,10 +272,10 @@ class Cadastrar extends React.Component {
                 TEXTOS.cadastrar,
                 " "
             ),
-            elem_nome_de_usuario,
-            elem_email,
-            elem_senha,
-            elem_repetir_senha,
+            elemento_nome_de_usuario,
+            elemento_email,
+            elemento_senha,
+            elemento_repetir_senha,
             React.createElement(
                 "div",
                 null,
