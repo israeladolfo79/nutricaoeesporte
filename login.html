@@ -108,6 +108,37 @@ body {
 
 <script>
 
+async function bater_na_api(json){
+
+    const ENDPOINT = ' http://127.0.0.1:5000/'
+    const body = {
+        'acao':'aaaa'
+    }
+    props = {
+        method: 'POST',
+        mode: 'cors', // pode ser cors ou basic(default)
+        redirect: 'follow',
+        body:JSON.stringify(body)
+    }
+    await fetch(ENDPOINT,props)
+    .then(response => response.json())  // convert to json
+    .then(json => console.log(json))    //print data to console
+    .catch(err => console.log('Request Failed', err)); // Catch errors
+
+    return {}
+}
+
+async function verifica_login(user){
+    return await bater_na_api({
+        elemento:'email_ou_nome_de_usuario',
+        valor:user
+    })
+}
+
+
+
+
+
 
 function botao(texto, funcao, lado) {
     return React.createElement(
@@ -187,7 +218,8 @@ class Login extends React.Component {
         if (valor_email == "") {
             this.setState({ erro_nome_de_usuario_ou_email: ERROS.email_ou_nome_de_usuarionao_em_branco });
         }
-
+        const resposta = verifica_login(valor_email);
+        console.log(resposta);
         this.setState({ valor_nome_de_usuario_ou_email: valor_email });
     }
 

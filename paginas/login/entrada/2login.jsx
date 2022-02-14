@@ -17,10 +17,11 @@ class Login extends React.Component{
         if(valor_email == ""){
             this.setState({erro_nome_de_usuario_ou_email:ERROS.email_ou_nome_de_usuarionao_em_branco})
         }
-
-        
+       const resposta = verifica_login(valor_email)
+        console.log(resposta)
         this.setState({valor_nome_de_usuario_ou_email:valor_email})
     }
+
 
 
     efetua_login(){
